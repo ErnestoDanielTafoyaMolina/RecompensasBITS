@@ -4,12 +4,14 @@ import usuario from './usuario'
 
 
 function App() {
-    return ( <
-        div className = 'app' >
-        <
-        h1 > Holaxd < /h1>   < /
-        div >
+    return ( 
+        
+        <div className = 'app' >
+        <h1> Holaxd </h1> 
+        </div>
+        
     );
+    
 }
 
 export default App;
