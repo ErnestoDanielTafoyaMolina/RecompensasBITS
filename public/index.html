@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,22 +22,161 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-</head>
+    <title>Rewards Bits</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  </head>
 
-<body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <body>
+    <!--<div id="root"></div>-->
+    <header class="main-header">
+      <div class="container container--flex">
+        <div class="main-header__container">
+          <h1 class="main-header__title">LOGO*</h1>
+          <span class="icon-menu" id="btn-menu"><i class="fas fa-bars"></i></span>
+          <nav class="main-nav" id="main-nav">
+            <ul class="menu">
+              <li class="menu__item"><a href="" class="menu__link">1</a></li>
+              <li class="menu__item"><a href="" class="menu__link">2</a></li>
+              <li class="menu__item"><a href="" class="menu__link">3</a></li>
+              <li class="menu__item"><a href="" class="menu__link">4</a></li>
+              <li class="menu__item"><a href="" class="menu__link">5</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="main-header__container">
+          <span class="main-header__txt">Need Help</span>
+          <p class="main-header__txt"><i class="fas fa-phone"></i> Call 12345678099</p>
+        </div>
+        <div class="main-header__container">
+          <input type="search" class="main-header__input" placeholder="Buscar productos"><i class="fas fa-search"></i>
+        </div>
+      </div>
+    </header>
+    <div class="container-slider">
+      <div class="slider" id="slider">
+        <div class="slider__section">
+          <img src="assets/img/img.jpg" alt="" class="slider__img">
+          <div class="slider__content">
+            <h2 class="slider__title">Titulo*</h2>
+            <p class="slider__txt">Subtitulo</p>
+            <a href="" class="btn-shop">Botón*</a>
+          </div>
+        </div>
+        <div class="slider__section">
+          <img src="assets/img/img1.jpg" alt="" class="slider__img">
+          <div class="slider__content">
+            <h2 class="slider__title">Titulo*</h2>
+            <p class="slider__txt">Subtitulo</p>
+            <a href="" class="btn-shop">Botón*</a>
+          </div>
+        </div>
+        <div class="slider__section">
+          <img src="assets/img/img2.jpg" alt="" class="slider__img">
+          <div class="slider__content">
+            <h2 class="slider__title">Titulo*</h2>
+            <p class="slider__txt">Subtitulo</p>
+            <a href="" class="btn-shop">Botón*</a>
+          </div>
+        </div>
+        <div class="slider__section">
+          <img src="assets/img/img3.jpeg" alt="" class="slider__img">
+          <div class="slider__content">
+            <h2 class="slider__title">Titulo*</h2>
+            <p class="slider__txt">Subtitulo</p>
+            <a href="" class="btn-shop">Botón*</a>
+          </div>
+        </div>
+      </div>
+      <div class="slider__btn slider__btn--right" id="btn-right">&#62;</div>
+      <div class="slider__btn slider__btn--left" id="btn-left">&#60;</div>
+    </div>
+    <main class="main">
+      <div class="container">
+        <h2>—— ¿Que es Recompensas Bits?</h2>
+        <div class="main-txt">
+          <p class="main__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum officia dolor deleniti beatae esse quis, minima saepe ad vel, error consectetur voluptatem dignissimos dolorum itaque voluptates sequi molestiae dicta sint.</p>
+          <p class="main__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum officia dolor deleniti beatae esse quis, minima saepe ad vel, error consectetur voluptatem dignissimos dolorum itaque voluptates sequi molestiae dicta sint.</p>
+        </div>
+        <div class="container-editor">
+          <div class="editor__item">
+            <img src="assets/img/img1.jpg" alt="" class="editor__img">
+            
+          </div>
+          <div class="editor__item">
+            <img src="assets/img/img.jpg" alt="" class="editor__img">
+            
+          </div>
+        </div>
+        <div class="main-txt">
+          <h2 class="main-txt">—— Catálogo</h2>
+        </div>
+        <section class="container-products">
+          <div class="product">
+            <img src="assets/img/img3.jpeg" alt="" class="product__img">
+            <div class="product__description">
+              <h3 class="product__title">Farenheit (Grey)</h3>
+              <span class="product__price">$575.00</span>
+            </div>
+            <i class="product__icon fas fa-cart-plus"></i>
+          </div>
+          <div class="product">
+            <img src="assets/img/img2.jpg" alt="" class="product__img">
+            <div class="product__description">
+              <h3 class="product__title">Opium (Grey)</h3>
+              <span class="product__price">$575.00</span>
+            </div>
+            <i class="product__icon fas fa-cart-plus"></i>
+          </div>
+          <div class="product">
+            <img src="assets/img/img1.jpg" alt="" class="product__img">
+            <div class="product__description">
+              <h3 class="product__title">Kenneth Cole</h3>
+              <span class="product__price">$575.00</span>
+            </div>
+            <i class="product__icon fas fa-cart-plus"></i>
+          </div>
+          <div class="product">
+            <img src="assets/img/img.jpg" alt="" class="product__img">
+            <div class="product__description">
+              <h3 class="product__title">Farenheit Oval</h3>
+              <span class="product__price">$325.00</span>
+            </div>
+            <a href="">Ver más... <i class="fas fa-angle-right"></i></a>
+          </div>
+        </section>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      </div>
+    </main>
+    <br>
+    <br>
+    <br>
+    <footer class="main-footer">
+      <div class="footer__section">
+        <h2 class="footer__title">LOGO*</h2>
+        <p class="footer__txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, velit. Quaerat, reprehenderit? Saepe architecto cumque assumenda vero quibusdam dolores reprehenderit consequuntur tempora at suscipit fuga blanditiis accusantium, quisquam fugit aliquid!</p>
+        
+      </div>
+      <div class="footer__section">
+        <h2 class="footer__title">Location :</h2>
+        <p class="footer__txt">...</p>
+      </div>
+      <div class="footer__section">
+        <h2 class="footer__title">Quick Links</h2>
+        <a href="" class="footer__link">Link 1</a>
+        <a href="" class="footer__link">Link 2</a>
+        <a href="" class="footer__link">Link 3</a>
+      </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-</body>
-
+      <div class="footer__Section">
+        <h2 class="footer__title">Contact</h2>
+        <p class="footer__txt">Phone : ...</p>
+        <p class="footer__txt">Email : ...</p>
+      </div>
+      
+      <p class="copy">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam, illo accusantium. Delectus maxime aut, voluptates similique assumenda soluta, deleniti nam, illo quas nobis quaerat pariatur praesentium saepe mollitia labore recusandae?</p>
+    </footer>
+    <script src="assets/js/slider.js"></script>
+  </body>
 </html>
