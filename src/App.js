@@ -1,16 +1,31 @@
 import React from 'react';
-import './App.css';
-import usuario from './usuario';
-import admin from './admin';
 
-function App() {
-    return ( 
-        <div className = "app" >
-            <usuario nombre="Emilio"/>
-            <admin/>
-            <h1>Root Space</h1>
-        </div>
-    );   
+import './App.css';
+
+
+
+import User from './Components/User/user';
+import Admin from './Components/Admin/admin';
+
+function App(props) {
+
+    if(props.name==="admin"){
+        return ( <>
+            
+            <Admin />
+            </>
+        );  
+    }else if(props.name==="usuario"){
+        return ( <>
+            
+            <User />
+        </>);
+    }
+    return ( <>
+    
+    
+    </>)
+
 }
 
 

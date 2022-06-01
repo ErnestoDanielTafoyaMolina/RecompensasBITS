@@ -1,0 +1,16 @@
+.bg-blue{
+    background-color: #022338;
+}
+
+.containerP{
+    
+    height: 100%;
+    width: 80px;
+    
+}
+
+.logoP{
+    height:80px;
+    width:auto;
+    padding: 10px;
+}

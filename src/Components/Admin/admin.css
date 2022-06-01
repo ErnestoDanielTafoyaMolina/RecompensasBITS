@@ -1,0 +1,38 @@
+.addIcon{
+    height:47px;
+    width:auto;
+}
+
+.btnGet{
+    background-color: #FABB00;
+    color:black;
+    border-color:transparent;
+    
+}
+.btnGet:hover{
+        background-color: #f8ea64;
+        color:black;
+        border-color:transparent;
+}
+
+.button{
+    border-radius: 8px;
+    height:47px;
+    font-size:47px;
+    width: auto;
+}
+
+.cards{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    padding: 10px;
+}
+
+.containerAdd{
+    margin:10px;
+    display:flex;
+    flex-direction:column;
+    align-items: flex-end;
+}
+
