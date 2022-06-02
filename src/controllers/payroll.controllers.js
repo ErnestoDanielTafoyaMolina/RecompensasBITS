@@ -1,0 +1,1 @@
+export const getPayroll=(req,res) => res.send('Nomina');
