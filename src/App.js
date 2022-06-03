@@ -15,7 +15,7 @@ function App(props) {
             <Admin />
             </>
         );  
-    }else if(props.name==="usuario"){
+    }else if(props.name==="user"){
         return ( <>
             
             <User />
