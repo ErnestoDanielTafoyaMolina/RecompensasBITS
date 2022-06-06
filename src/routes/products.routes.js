@@ -5,12 +5,12 @@ const router = Router();
 
 router.get('/products', getProducts);
 
-router.post('/products',);
+// router.post('/products',);
 
-router.get('/products', getProducts);
+// router.get('/products', getProducts);
 
-router.delete('/products',);
+// router.delete('/products',);
 
-router.put('/products',);
+// router.put('/products',);
 
 export default router;  
