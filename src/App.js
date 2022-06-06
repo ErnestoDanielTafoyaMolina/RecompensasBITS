@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
-
-
 
 import User from './Components/User/user';
 import Admin from './Components/Admin/admin';
 
-function App(props) {
+import getUsers from './api/functions';
 
-    if(props.name==="admin"){
+function App() {
+    const rolUser="Administrador";
+    const [users, setUsers] = useState(null);
+    useEffect(() => {
+        getUsers(setUsers);
+    },[]);
+
+    console.log(users)
+
+    if(rolUser==="Administrador"){
         return ( <>
             
             <Admin />
             </>
         );  
-    }else if(props.name==="user"){
+    }else if(rolUser==="Usuario"){
         return ( <>
             
             <User />
+            
         </>);
     }
     return ( <>
