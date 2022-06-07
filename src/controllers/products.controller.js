@@ -1,16 +1,11 @@
-// import { getConnection } from "../database/connection";
+import { getConnection } from "../database/connection";
 
-// export const getProducts = async (req,res) => {
+export const getProducts = async (req,res) => {
     
-//     // const pool = await getConnection();
-//     // const result = await pool.request().query('SELECT * FROM productos');
+     const pool = await getConnection();
+     const products = await pool.request().query('SELECT * FROM Productos');
 
-//     // console.log(result)
+     console.log(products)
 
-//     const usuario ={
-//         Nombre:"Alvaro Emmanuel",
-//         Apellido:"Herrera Anda",
-//         Rol:"Administrador",
-//     }
-//     res.json(usuario);
-// };
+    res.json(products.recordset);
+};
