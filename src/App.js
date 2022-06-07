@@ -5,6 +5,8 @@ import './App.css';
 import User from './Components/User/user';
 import Admin from './Components/Admin/admin';
 
+import TarjetasUsuario from './Components/Admin/Views/usersTables/usersTables'
+
 import getUsers from './api/functions';
 
 function App() {
@@ -20,6 +22,24 @@ function App() {
         return ( <>
             
             <Admin />
+               
+                {
+                    users != null ? (
+                        users.map( user  => (
+                            <div className="cardsu">
+                                <div key={user.Id_usuario}>
+                                    <TarjetasUsuario 
+                                    idUsusario={user.Id_usuario}
+                                    nombreUsuario={user.Nombre}
+                                    apellidoUsuario={user.Apellido}
+                                    rolUsuario={user.Rol}
+                                />
+                                </div>
+                            </div>
+                        ))
+                    ):('No hay usuarios disponibles')
+                }
+                
             </>
         );  
     }else if(rolUser==="Usuario"){

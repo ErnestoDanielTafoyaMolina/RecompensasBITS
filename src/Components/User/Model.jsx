@@ -12,7 +12,7 @@ function Modals (props) {
 
   return (
     <>
-      <Button variant="success" onClick={handleShow}>
+      <Button variant="warning" onClick={handleShow}>
         Agregar
       </Button>
 
