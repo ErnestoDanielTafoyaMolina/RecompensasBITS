@@ -6,7 +6,7 @@ npm install mssql express morgan cors dotenv
 npm i @babel/core @babel/cli @babel/preset-env @babel/node nodemon -D
 
 ## ocupan las variables de entorno mismas que van en un archivo .env
-PORT= "4000"
+PORT= "3001"
 CONNECTION_PORT="65535"
 DB_USER="its-academy"
 DB_PASSWORD="Infinity01?"
