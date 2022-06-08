@@ -1,139 +1,35 @@
 import React from 'react';
 
 import { NavBar} from '../Common/index_common';
+import Request from './Views/Request/index_req';
+import Products from './Views/Products/index_p';
+import MainMenu from './Views/home/home';
+//  import {Container, Button} from 'react-bootstrap';
+// import Cards from './cards';
+//  import AddIcon from '@mui/icons-material/Add';
+// // import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 
-import {Container, Button, Card} from 'react-bootstrap';
-import AddIcon from '@mui/icons-material/Add';
-import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
-
-import laptop from './../../Components/Assets/laptop.png';
+// import laptop from './../../Components/Assets/laptop.png';
 
 import './admin.css';
+import { BrowserRouter,Route, Routes } from 'react-router-dom';
 
-function Admin (){
+
+function Admin (props){
     return (
         <>
+        <BrowserRouter>
+        <Routes>
+            <Route path='/' element={<NavBar/>}>
+                <Route path='Requests' element={<Request />}/>
+                <Route path='Products' element={<Products/>}/>
 
-        <NavBar />
-        <Container>
+                <Route path='/' element={<MainMenu />}/>
 
-            <div className="containerAdd">
-                <Button variant="success" className="" style={{ height:'auto'}}>
-                    <AddIcon className="addIcon" />
-                    Add Product</Button>{''}
-            </div>
+            </Route>
+        </Routes>
+        </BrowserRouter>
 
-            <div className="cards">
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={laptop} />
-                    
-                        <Card.Body>
-                            <Card.Title>HP Laptop</Card.Title>
-                            <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.
-                            </Card.Text>
-                            <div className="price">
-                                <span>
-                                    <b>Price</b>
-                                </span>
-                            <button className="btnGet button">
-                                <AddShoppingCartRoundedIcon className="addCart"/>
-                            Get this product!</button>
-
-                            </div>
-                        </Card.Body>
-                </Card>
-
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={laptop} />
-                        <Card.Body>
-                            <Card.Title>HP Laptop</Card.Title>
-                            <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.
-                            </Card.Text>
-                            <div className="price">
-                                <span>
-                                    <b>Price</b>
-                                </span>
-                            <button className="btnGet button">
-                                <AddShoppingCartRoundedIcon className="addCart"/>
-                            Get this product!</button>
-
-                            </div>
-                        </Card.Body>
-                </Card>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={laptop} />
-                        <Card.Body>
-                            <Card.Title>HP Laptop</Card.Title>
-                            <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.
-                            </Card.Text>
-                            <div className="price">
-                                <span>
-                                    <b>Price</b>
-                                </span>
-                            <button className="btnGet button">
-                                <AddShoppingCartRoundedIcon className="addCart"/>
-                            Get this product!</button>
-
-                            </div>
-                        </Card.Body>
-                </Card>
-            </div>
-            <div className="cards">
-            <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={laptop} />
-                        <Card.Body>
-                            <Card.Title>HP Laptop</Card.Title>
-                            <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.
-                            </Card.Text>
-                            <div className="price">
-                                <span>
-                                    <b>Price</b>
-                                </span>
-                            <button className="btnGet button">
-                                <AddShoppingCartRoundedIcon className="addCart"/>
-                            Get this product!</button>
-
-                            </div>
-                        </Card.Body>
-                </Card>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={laptop} />
-                        <Card.Body>
-                            <Card.Title>HP Laptop</Card.Title>
-                            <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.
-                            </Card.Text>
-                            <div className="price">
-                                <span>
-                                    <b>Price</b>
-                                </span>
-                            <button className="btnGet button">
-                                <AddShoppingCartRoundedIcon className="addCart"/>
-                            Get this product!</button>
-
-                            </div>
-                        </Card.Body>
-                </Card>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={laptop} />
-                        <Card.Body>
-                            <Card.Title>HP Laptop</Card.Title>
-                            <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.
-                            </Card.Text>
-                            <div className="price">
-                                <span>
-                                    <b>Price</b>
-                                </span>
-                            <button className="btnGet button">
-                                <AddShoppingCartRoundedIcon className="addCart"/>
-                            Get this product!</button>
-
-                            </div>
-                        </Card.Body>
-                </Card>
-            </div>
-
-        </Container>
-        
         </>
     );
 }

@@ -13,7 +13,7 @@ function Modals (props) {
   return (
     <>
       <Button variant="warning" onClick={handleShow}>
-        Agregar
+        Canjear este producto
       </Button>
 
       <Modal show={show} onHide={handleClose}>

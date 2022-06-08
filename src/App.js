@@ -1,45 +1,26 @@
-import React, { useEffect, useState } from 'react';
-
+//React dependenses
+import React from 'react';
+// import { useParams } from 'react-router-dom';
+//estilos
 import './App.css';
 
+// Rutas relativas propias
 import User from './Components/User/user';
 import Admin from './Components/Admin/admin';
+// import { getUniqueUser} from './api/petitions_index';
 
-import TarjetasUsuario from './Components/Admin/Views/usersTables/usersTables'
-
-import getUsers from './api/functions';
 
 function App() {
-    const rolUser="Administrador";
-    const [users, setUsers] = useState(null);
-    useEffect(() => {
-        getUsers(setUsers);
-    },[]);
-
-    console.log(users)
-
+    const rolUser="Administrador";//Cambiar aqui para el tipo de rol
+    //hooks
+    // const params=useParams();
+    // useEffect(()=>{
+    //     getUniqueUser(params.Rol)
+    // },[])
     if(rolUser==="Administrador"){
         return ( <>
             
-            <Admin />
-               
-                {
-                    users != null ? (
-                        users.map( user  => (
-                            <div className="cardsu">
-                                <div key={user.Id_usuario}>
-                                    <TarjetasUsuario 
-                                    idUsusario={user.Id_usuario}
-                                    nombreUsuario={user.Nombre}
-                                    apellidoUsuario={user.Apellido}
-                                    rolUsuario={user.Rol}
-                                />
-                                </div>
-                            </div>
-                        ))
-                    ):('No hay usuarios disponibles')
-                }
-                
+            <Admin />          
             </>
         );  
     }else if(rolUser==="Usuario"){
