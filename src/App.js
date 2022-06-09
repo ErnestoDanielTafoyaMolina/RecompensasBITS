@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import Estructura from './assets/components/estructura';
+import { Container, Row } from "react-bootstrap";
+import React, {useEffect, useState} from "react";
+import getProducts from "./api/peticionProductos";
 
 function App() {
+
+  const [products, setProducts]= useState(null);
+
+  useEffect(()=>{
+    getProducts(setProducts)
+},[])
+
+  console.log(products)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Container>
+        <Row>
+        {products != null ?(
+                products.map(product =>(
+                    <Estructura
+                      name={product.Nombre_Producto}
+                      desc={product.Descripcion}
+                      price={product.Precio}
+                      disponibility={product.Existencia}
+                    />
+                ))
+            ):('Cargando...')}
+        </Row>
+      </Container>
+    </>
   );
 }
 
