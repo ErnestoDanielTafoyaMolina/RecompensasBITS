@@ -12,3 +12,92 @@ export const getProducts = async (req,res) => {
         console.log(error)
     }
 };
+
+export const getProductById = async (req, res) => {
+    try {
+      const pool = await getConnection();
+  
+      const result = await pool
+        .request()
+        .input("id", req.params.id)
+        .query('SELECT * FROM Productos Where Id_Producto = @id');
+      return res.json(result.recordset[0]);
+    } catch (error) {
+      res.status(500);
+      res.send(error.message);
+    }
+  };
+
+  export const createNewProduct = async (req, res) => {
+    const { name, description, price, image  } = req.body;
+    let { quantity } = req.body;
+  
+    // validating
+    if (description == null || name == null || price == null) {
+      return res.status(400).json({ msg: "Por favor llena los campos solicitados" });
+    }
+  
+    if (quantity == null) quantity = 0;
+  
+    try {
+      const pool = await getConnection();
+  
+      await pool
+        .request()
+        .input("name", sql.VarChar, name)
+        .input("description", sql.Text, description)
+        .input("price", sql.Int,price)
+        .input("quantity", sql.Int, quantity)
+        .input("image", sql.Text, image)
+        .query("INSERT INTO [BITS_Recompensas].[dbo].[Productos] (Nombre_Producto, Descripcion, Precio, Existencia, Imagen) VALUES (@name,@description,@price,@quantity,@image);");
+  
+      res.json({ name, description, price, quantity, image});
+    } catch (error) {
+      res.status(500);
+      res.send(error.message);
+    }
+  };
+  
+  export const deleteProductById = async (req, res) => {
+    try {
+      const pool = await getConnection();
+  
+      const result = await pool
+        .request()
+        .input("id", req.params.id)
+        .query("DELETE FROM [BITS_Recompensas].[dbo].[Productos] WHERE Id_Producto= @Id");
+  
+      if (result.rowsAffected[0] === 0) return res.sendStatus(404);
+  
+      return res.sendStatus(204);
+    } catch (error) {
+      res.status(500);
+      res.send(error.message);
+    }
+  };
+
+  export const updateProductById = async (req, res) => {
+    const { description, name, price, quantity, image } = req.body;
+  
+    // validating
+    if (description == null || name == null || price == null || quantity == null || image == null) {
+      return res.status(400).json({ msg: "Por favor llena los campos solicitados" });
+    }
+  
+    try {
+      const pool = await getConnection();
+      await pool
+        .request()
+        .input("name", sql.VarChar, name)
+        .input("description", sql.Text, description)
+        .input("price",sql.Int,price)
+        .input("quantity", sql.Int, quantity)
+        .input("image", sql.Text, image)
+        .input("id", req.params.id)
+        .query("UPDATE [BITS_Recompensas].[dbo].[Productos] SET Nombre_Producto = @Name Descripcion = @description Precio = @price Existencia = @quantity Existencia Imagen = @image Existencia",);
+      res.json({ name, description, quantity });
+    } catch (error) {
+      res.status(500);
+      res.send(error.message);
+    }
+  };
