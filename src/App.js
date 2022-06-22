@@ -1,40 +1,52 @@
 //React dependenses
-import React from 'react';
-// import { useParams } from 'react-router-dom';
+import React,{ useEffect, useState } from 'react';
 //estilos
 import './App.css';
 
 // Rutas relativas propias
 import User from './Components/User/user';
 import Admin from './Components/Admin/admin';
-// import { getUniqueUser} from './api/petitions_index';
+import { getUniqueUser} from './api/petitions_index';
 
 
 function App() {
-    const rolUser="Administrador";//Cambiar aqui para el tipo de rol
-    //hooks
-    // const params=useParams();
-    // useEffect(()=>{
-    //     getUniqueUser(params.Rol)
-    // },[])
-    if(rolUser==="Administrador"){
-        return ( <>
-            
-            <Admin />          
-            </>
-        );  
-    }else if(rolUser==="Usuario"){
-        return ( <>
-            
-            <User />
-            
-        </>);
-    }
-    return ( <>
-    
-    
-    </>)
 
+    //variables
+    const idUsuario=1;
+
+    //hooks
+    const [usuario,setUsuario] = useState(null);
+    useEffect(()=>{
+        getUniqueUser( idUsuario, setUsuario );
+    }, [])
+
+    if(usuario!=null){
+        if(usuario.Rol==="Administrador"){
+            return(
+                <>
+                <Admin />
+                </>
+            )
+        }else if(usuario.Rol==="Usuario"){
+            return(
+                <>
+                <User />
+                </>
+            )
+        }else{
+            return(
+                <>
+                    <h2>No te has loggeado</h2>
+                </>
+            )
+        }
+    }else{
+        return(
+            <>
+                <h1>No hay usuarios</h1>
+            </>
+        )
+    }
 }
 
 

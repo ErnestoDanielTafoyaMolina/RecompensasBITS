@@ -1,53 +1,44 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 // import {NavBar} from '../Common/index_common';
-import { NavBaru,MainMenu } from '../Common/index_common';
+import { NavBaru} from '../Common/index_common';
 import './user.css';
 // import {Container,Button, Card,Modal} from 'react-bootstrap';
 import laptop from './../../Components/Assets/laptop.png'
 // import { useState } from 'react';
 // import Model from './Model';
 import Cards from './cards';
+import {getProducts} from '../../api/petitions_index';
+
+
 
 
 function User (props){
+    const [products, setProducts]= useState(null);
+
+    useEffect(()=>{
+      getProducts(setProducts)
+  },[]) 
+    const name = props.name;
+    const desc = props.desc;
+    const price = props.price;
+    const disponibility = props.disponibility;
+
     return ( 
     <>
         <NavBaru/> 
-        <MainMenu />
         <div className='cardsu'>
-            <Cards
-            NombreP="Hp"
-            InfoP="negra"
-            NameImage={laptop}
-            />
-            <Cards
-            NombreP="Omen"
-            InfoP="gris"
-            NameImage={laptop}
-            />
-            <Cards
-            NombreP="Nitro 5"
-            InfoP="Gamer"
-            NameImage={laptop}
-            />
-        </div>
+        {products != null ?(
+                products.map(product =>(
 
-        <div className="cardsu">
-        <Cards
-            NombreP="Lenovo"
-            InfoP="S340"
-            NameImage={laptop}
-            />
-        <Cards
-            NombreP="Huawei"
-            InfoP="gris"
-            NameImage={laptop}
-            />
-        <Cards
-            NombreP="AlienWare"
-            InfoP="x"
-            NameImage={laptop}
-            />
+                    <Cards
+                    NombreP={product.Nombre_Producto}
+                    InfoP={product.Descripcion}
+                    NameImage={laptop}
+                    price={product.Precio}
+                    disponibility={product.Existencia}
+                    />
+                ))
+            ):('Cargando...')}
         </div>
       </>
     );

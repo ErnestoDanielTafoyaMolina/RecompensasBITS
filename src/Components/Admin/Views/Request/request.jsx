@@ -24,6 +24,7 @@ return(
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Rol</th>
+            <th>Bits</th>
             </tr>
         </thead>
 
@@ -35,6 +36,7 @@ return(
                     nombreUsuario={usuario.Nombre}
                     apellidoUsuario={usuario.Apellido}
                     rolUsuario={usuario.Rol}
+                    Bits={usuario.Bits}
                     />
                 ))
             ):('Cargando...')}

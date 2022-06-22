@@ -1,6 +1,13 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// const getUniqueUser = async (rol, state)=>{
-//     const peticion = await axios.get("http://localhost:3001/api/users/rol:Administrador")
-// }
-// export default getUniqueUser;
+const getUniqueUser = async (id,state)=>{
+    try{
+        const peticion = await axios.get(`http://localhost:3001/api/users/${id}`);
+        state(peticion.data);
+        
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export default getUniqueUser;

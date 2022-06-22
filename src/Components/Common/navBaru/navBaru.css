@@ -2,6 +2,14 @@
     background-color: #022338;
 }
 
+.bits{
+    
+    text-align: right;
+    align-items: right;
+    padding-right: 50px;
+    background-color: #022338;
+}
+
 .containerP{
     
     height: 100%;

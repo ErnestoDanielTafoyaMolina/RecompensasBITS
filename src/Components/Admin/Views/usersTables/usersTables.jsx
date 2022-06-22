@@ -6,6 +6,7 @@ function TablasUsuario(props){
     const nameUser = props.nombreUsuario;
     const lastNameUser = props.apellidoUsuario;
     const rolUser = props.rolUsuario;
+    const bitsuser = props.Bits
 
     return(
         <> 
@@ -15,6 +16,7 @@ function TablasUsuario(props){
             <td>{nameUser}</td>
             <td>{lastNameUser}</td>
             <td>{rolUser}</td>
+            <td>{bitsuser}</td>
         </tr>
         </>
     )

@@ -5,7 +5,10 @@ import Model from "./Model"
 function Cartas(props){
     const imgProducto = props.NameImage;
     const nombreProduct=props.NombreP;
-    const DescProduct=props.InfoP
+    const DescProduct=props.InfoP;
+    const price = props.price;
+    const disponibility = props.disponibility;
+
     return(
         <>
             <Card style={{ width: '18rem' }}>
@@ -13,8 +16,13 @@ function Cartas(props){
                 <Card.Body>
                     <Card.Title>{nombreProduct}</Card.Title>
                     <Card.Text>
-                        {DescProduct}
+                    <ul>
+                            <li>Descripcion: {DescProduct}</li>
+                            <li>Precio: {price} BITS</li>
+                            <li>¿Hay en existencia?: {disponibility}</li>
+                        </ul>
                     </Card.Text>
+
                     <Model /> 
                 </Card.Body>
             </Card>
