@@ -14,7 +14,7 @@ router.get("/products/:id", getProductById);// obtiene un solo producto por el i
 
 router.post("/products", createNewProduct); // crea un nuevo producto
 
-router.delete("/products/:id", deleteProductById);// elimina el producto por el id
+router.put("/products/:id", deleteProductById);// elimina el producto por el id
 
 router.put("/products/:id", updateProductById);// actualiza un producto por su id
 
