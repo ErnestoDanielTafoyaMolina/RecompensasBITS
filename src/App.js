@@ -12,7 +12,7 @@ import { getUniqueUser} from './api/petitions_index';
 function App() {
 
     //variables
-    const idUsuario=1;
+    const idUsuario=15;
 
     //hooks
     const [usuario,setUsuario] = useState(null);
@@ -24,13 +24,17 @@ function App() {
         if(usuario.Rol==="Administrador"){
             return(
                 <>
-                <Admin />
+                <Admin 
+                id={idUsuario}
+                />
                 </>
             )
         }else if(usuario.Rol==="Usuario"){
             return(
                 <>
-                <User />
+                <User
+                id={idUsuario}
+                />
                 </>
             )
         }else{

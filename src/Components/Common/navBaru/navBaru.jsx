@@ -8,14 +8,15 @@ import './navBaru.css';
 
 
 
-function NavBaru(){
+function NavBaru(props){
 
-  const idUsuario=1
+  
 
   const [usuario,setUsuario] = useState(null);
     useEffect(()=>{
+      const idUsuario=props.id
         getUniqueUser( idUsuario, setUsuario );
-    }, [])
+    }, [props.id])
 
 
 

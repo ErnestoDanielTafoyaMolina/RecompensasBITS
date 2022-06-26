@@ -1,40 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Cards from './cards';
 import './../../admin.css';
-
-import {Button} from 'react-bootstrap';
-
-//---ICONS---
-import AddIcon from '@mui/icons-material/Add';
-
+import './products.css'
 import laptop from './../../../../Components/Assets/laptop.png';
 
+//--Peticion para productos--
+import { getProducts } from '../../../../api/petitions_index';
+
 function Products(props){
+    const [products, setProducts]= useState(null);
+
+    useEffect(()=>{
+      getProducts(setProducts)
+  },[]) 
     return(
         <>
-        {/* <h1>View Products</h1> */}
-        <div className="containerAdd">
-                <Button variant="success" className="" style={{ height:'auto'}}>
-                    <AddIcon className="addIcon" />
-                    Add Product</Button>{''}
+            <div className="Productos">
+            {products != null ?(
+                products.map(product =>(
+            
+                    <Cards className='card'
+                    name={product.Nombre_Producto}
+                    info={product.Descripcion}
+                    img={laptop}
+                    price={product.Precio}
+                    disponibility={product.Existencia}
+                    />
+                ))
+            ):('Cargando...')}
             </div>
-        <div className="cards">
-                    <Cards 
-                    NombreP="iPhone 13"
-                    InfoP="Azul Oxford"
-                    NameImage={laptop}
-                    />
-                    <Cards
-                    NombreP="iPhone 12 Pro Max"
-                    InfoP="Space Gray"
-                    NameImage={laptop}
-                    />
-                    <Cards
-                    NombreP="iPhone 11"
-                    InfoP="Sweet Pruple"
-                    NameImage={laptop}
-                    />
-                </div>
         </>
     )
 }

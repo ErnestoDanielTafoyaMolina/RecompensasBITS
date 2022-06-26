@@ -13,19 +13,19 @@ import {getProducts} from '../../api/petitions_index';
 
 
 function User (props){
+    const id=props.id;
     const [products, setProducts]= useState(null);
 
     useEffect(()=>{
       getProducts(setProducts)
   },[]) 
-    const name = props.name;
-    const desc = props.desc;
-    const price = props.price;
-    const disponibility = props.disponibility;
+
 
     return ( 
     <>
-        <NavBaru/> 
+        <NavBaru
+          id={id}
+        /> 
         <div className='cardsu'>
         {products != null ?(
                 products.map(product =>(

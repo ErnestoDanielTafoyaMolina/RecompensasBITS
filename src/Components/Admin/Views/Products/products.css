@@ -1,0 +1,10 @@
+.Productos{
+    justify-content: center;
+    justify-items: center;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    
+    justify-content:space-evenly;
+    padding: 10px;
+    grid-gap:10px;
+}
