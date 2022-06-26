@@ -1,3 +1,4 @@
+// eslint-disable-next-line 
 import React, { useEffect, useState } from 'react';
 import Cards from './cards';
 import './../../admin.css';
@@ -20,6 +21,7 @@ function Products(props){
                 products.map(product =>(
             
                     <Cards className='card'
+                    id={product.Id_Producto}
                     name={product.Nombre_Producto}
                     info={product.Descripcion}
                     img={laptop}

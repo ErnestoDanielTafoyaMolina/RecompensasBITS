@@ -1,4 +1,5 @@
-  import React, {useEffect, useState} from 'react';
+// eslint-disable-next-line   
+import React, {useEffect, useState} from 'react';
 import { Navbar, Nav, Container} from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import logo from './../../Assets/logo-bits.png';

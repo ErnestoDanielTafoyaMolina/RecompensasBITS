@@ -13,7 +13,7 @@ import { getUniqueUser} from './api/petitions_index';
 function App() {
 
     //variables
-    const idUsuario=2;
+    const idUsuario=1;
 
     //hooks
     const [usuario,setUsuario] = useState(null);

@@ -1,3 +1,4 @@
+// eslint-disable-next-line 
 import React from "react";
 import { Card  } from "react-bootstrap";
 import Model from "./Model"
