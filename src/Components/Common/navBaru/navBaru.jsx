@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+  import React, {useEffect, useState} from 'react';
 import { Navbar, Nav, Container} from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import logo from './../../Assets/logo-bits.png';
@@ -12,7 +12,8 @@ function NavBaru(props){
 
   
 
-  const [usuario,setUsuario] = useState(null);
+    const [usuario, setUsuario] = useState(null);
+
     useEffect(()=>{
       const idUsuario=props.id
         getUniqueUser( idUsuario, setUsuario );

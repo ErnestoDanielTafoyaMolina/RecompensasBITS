@@ -1,8 +1,18 @@
 import React from "react";
 import {Button, Modal} from 'react-bootstrap'
-import { useState } from "react";
+import { useState, useEffect} from "react";
+//peticion
+import {getUniqueProduct} from '../../api/petitions_index';
 
 function Modals (props) {
+//hooks
+    const [producto, setProducto] = useState(null);
+
+    useEffect(()=>{
+      const idProducto=props.id;
+      getUniqueProduct( idProducto, setProducto );
+    }, [props.id])
+      
     const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -20,7 +30,13 @@ function Modals (props) {
         <Modal.Header closeButton>
           <Modal.Title>Confirmacion</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Selcciono este producto, desea confirmar su canje</Modal.Body>  
+        <Modal.Body>
+          { producto != null ? (
+          <p>Ha seleccionado el producto:{producto.Nombre_Producto} con el precio: {producto.Precio} Bits¿Seguro que quiere adquirirlo?</p>  
+          ):(
+            'Cargando...'
+          )}
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="outline-danger" onClick={handleClose}>
             Cancelar

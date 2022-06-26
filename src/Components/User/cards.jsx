@@ -1,8 +1,9 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card  } from "react-bootstrap";
 import Model from "./Model"
 
 function Cartas(props){
+    const idProduct=props.id;
     const imgProducto = props.NameImage;
     const nombreProduct=props.NombreP;
     const DescProduct=props.InfoP;
@@ -23,7 +24,7 @@ function Cartas(props){
                         </ul>
                     </Card.Text>
 
-                    <Model /> 
+                    <Model id={idProduct}/> 
                 </Card.Body>
             </Card>
         

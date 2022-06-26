@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 //React dependenses
 import React,{ useEffect, useState } from 'react';
 //estilos
@@ -12,7 +13,7 @@ import { getUniqueUser} from './api/petitions_index';
 function App() {
 
     //variables
-    const idUsuario=15;
+    const idUsuario=2;
 
     //hooks
     const [usuario,setUsuario] = useState(null);

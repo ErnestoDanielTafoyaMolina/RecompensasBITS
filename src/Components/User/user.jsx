@@ -30,7 +30,8 @@ function User (props){
         {products != null ?(
                 products.map(product =>(
 
-                    <Cards
+                    <Cards 
+                    id={product.Id_Producto}
                     NombreP={product.Nombre_Producto}
                     InfoP={product.Descripcion}
                     NameImage={laptop}
