@@ -3,7 +3,7 @@ import { getConnection } from "../database/connection";
 export const getProducts = async (req,res) => {
     try {
         const pool = await getConnection();
-        const products = await pool.request().query('SELECT * FROM Productos');
+        const products = await pool.request().query("SELECT * FROM Productos WHERE Estado='Alta'");
    
         console.log(products)
    
@@ -48,7 +48,7 @@ export const getProductById = async (req, res) => {
         .input("description", sql.Text, description)
         .input("price", sql.Int,price)
         .input("quantity", sql.Int, quantity)
-        .input("image", sql.Text, image)
+        .input("image", sql.Image, image)
         .query("INSERT INTO [BITS_Recompensas].[dbo].[Productos] (Nombre_Producto, Descripcion, Precio, Existencia, Imagen) VALUES (@name,@description,@price,@quantity,@image);");
   
       res.json({ name, description, price, quantity, image});
@@ -65,7 +65,7 @@ export const getProductById = async (req, res) => {
       const result = await pool
         .request()
         .input("id", req.params.id)
-        .query("DELETE FROM [BITS_Recompensas].[dbo].[Productos] WHERE Id_Producto= @Id");
+        .query("UPDATE [BITS_Recompensas].[dbo].[Productos] SET Estado='Baja' WHERE Id_Producto= @Id");
   
       if (result.rowsAffected[0] === 0) return res.sendStatus(404);
   
@@ -92,7 +92,7 @@ export const getProductById = async (req, res) => {
         .input("description", sql.Text, description)
         .input("price",sql.Int,price)
         .input("quantity", sql.Int, quantity)
-        .input("image", sql.Text, image)
+        .input("image", sql.Image, image)
         .input("id", req.params.id)
         .query("UPDATE [BITS_Recompensas].[dbo].[Productos] SET Nombre_Producto = @Name Descripcion = @description Precio = @price Existencia = @quantity Existencia Imagen = @image Existencia",);
       res.json({ name, description, quantity });
