@@ -48,7 +48,16 @@ function App() {
     }else{
         return(
             <>
-                <h1>No hay usuarios</h1>
+                <div className='error'>
+                    <div className='container'>
+                        <div className='header'>
+                            <h1>Servidor caido o no iniciado</h1>
+                        </div>
+                        <div className='body'>
+                            <p>Algo ha ido mal, contacta con el administrador para reiniciar el servidor</p>
+                        </div>
+                    </div>
+                </div>
             </>
         )
     }

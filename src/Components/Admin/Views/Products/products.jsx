@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Cards from './cards';
 import './../../admin.css';
 import './products.css'
-import laptop from './../../../../Components/Assets/laptop.png';
-
+import laptop from './../../../../Components/Assets/default.png';
+import { Button } from 'react-bootstrap'
+import AddIcon from '@mui/icons-material/Add';
 //--Peticion para productos--
 import { getProducts } from '../../../../api/petitions_index';
 
@@ -16,6 +17,11 @@ function Products(props){
   },[]) 
     return(
         <>
+        <div className="containerAdd">
+                <Button variant="success" className="" style={{ height:'auto'}}>
+                    <AddIcon className="addIcon" />
+                    Añadir producto</Button>{''}
+            </div>
             <div className="Productos">
             {products != null ?(
                 products.map(product =>(

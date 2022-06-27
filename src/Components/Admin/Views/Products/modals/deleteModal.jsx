@@ -20,7 +20,10 @@ function DeleteModals (props) {
   const handleShow = () => setShow(true);
   // const NP=props.name;
   // const IP=props.info;
-
+    const eliminar = (id)=>{
+      deleteProductById(props.idProducto);
+      window.location.reload();
+    }
   return (
     <>
       <Button variant="danger" onClick={handleShow}>
@@ -44,7 +47,7 @@ function DeleteModals (props) {
           <Button variant="outline-danger" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="outline-success" onClick={deleteProductById}>
+          <Button variant="outline-success" onClick={eliminar}>
             Confirmar
           </Button>
         </Modal.Footer>
