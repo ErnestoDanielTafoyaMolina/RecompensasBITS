@@ -45,9 +45,9 @@ export const getProductById = async (req, res) => {
       await pool
         .request()
         .input("name", sql.VarChar, name)
-        .input("description", sql.Text, description)
-        .input("price", sql.Int,price)
-        .input("quantity", sql.Int, quantity)
+        .input("desc", sql.Text, description)
+        .input("price",sql.Int,price)
+        .input("stock", sql.Int, quantity)
         .input("image", sql.Image, image)
         .query("INSERT INTO [BITS_Recompensas].[dbo].[Productos] (Nombre_Producto, Descripcion, Precio, Existencia, Imagen) VALUES (@name,@description,@price,@quantity,@image);");
   
@@ -89,9 +89,9 @@ export const getProductById = async (req, res) => {
       await pool
         .request()
         .input("name", sql.VarChar, name)
-        .input("description", sql.Text, description)
+        .input("desc", sql.Text, description)
         .input("price",sql.Int,price)
-        .input("quantity", sql.Int, quantity)
+        .input("stock", sql.Int, quantity)
         .input("image", sql.Image, image)
         .input("id", req.params.id)
         .query("UPDATE [BITS_Recompensas].[dbo].[Productos] SET Nombre_Producto = @Name Descripcion = @description Precio = @price Existencia = @quantity Existencia Imagen = @image Existencia",);
