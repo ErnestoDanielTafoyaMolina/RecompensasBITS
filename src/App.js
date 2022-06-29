@@ -9,11 +9,12 @@ import User from './Components/User/user';
 import Admin from './Components/Admin/admin';
 import { getUniqueUser} from './api/petitions_index';
 
+import errorImage from './assets/img/error.png'
 
 function App() {
 
     //variables
-    const idUsuario=1;
+    const idUsuario=15;
 
     //hooks
     const [usuario,setUsuario] = useState(null);
@@ -55,6 +56,9 @@ function App() {
                         </div>
                         <div className='body'>
                             <p>Algo ha ido mal, contacta con el administrador para reiniciar el servidor</p>
+                            <div className='img'>
+                                <img src={errorImage} alt='error'/>
+                            </div>
                         </div>
                     </div>
                 </div>

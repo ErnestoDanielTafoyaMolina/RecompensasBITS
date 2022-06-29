@@ -1,4 +1,4 @@
-.cardsu{
+.Productos{
     justify-content: center;
     justify-items: center;
     display:grid;
@@ -7,4 +7,30 @@
     justify-content:space-evenly;
     padding: 10px;
     grid-gap:10px;
+}
+
+@media (max-width:930px){
+    .Productos{
+        justify-content: center;
+        justify-items: center;
+        display:grid;
+        grid-template-columns: repeat(2,1fr);
+        
+        justify-content:space-evenly;
+        padding: 10px;
+        grid-gap:10px;
+    }
+}
+
+@media (max-width:630px){
+    .Productos{
+        justify-content: center;
+        justify-items: center;
+        display:grid;
+        grid-template-columns: repeat(1,1fr);
+        
+        justify-content:space-evenly;
+        padding: 10px;
+        grid-gap:10px;
+    }
 }

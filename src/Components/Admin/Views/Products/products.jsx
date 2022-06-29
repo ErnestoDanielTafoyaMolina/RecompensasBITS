@@ -4,8 +4,7 @@ import Cards from './cards';
 import './../../admin.css';
 import './products.css'
 import laptop from './../../../../Components/Assets/default.png';
-import { Button } from 'react-bootstrap'
-import AddIcon from '@mui/icons-material/Add';
+import AddProductModal from './modals/addProductModal';
 //--Peticion para productos--
 import { getProducts } from '../../../../api/petitions_index';
 
@@ -18,9 +17,7 @@ function Products(props){
     return(
         <>
         <div className="containerAdd">
-                <Button variant="success" className="" style={{ height:'auto'}}>
-                    <AddIcon className="addIcon" />
-                    Añadir producto</Button>{''}
+                <AddProductModal />
             </div>
             <div className="Productos">
             {products != null ?(

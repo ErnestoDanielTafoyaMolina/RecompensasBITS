@@ -33,7 +33,7 @@ function NavBaru(props){
             </Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="#home">
-                <h3>Home</h3>
+                <h3>Principal</h3>
               </Nav.Link>
               <Nav.Link href="#features">
                 <h3>Catalogo</h3>
@@ -44,7 +44,7 @@ function NavBaru(props){
             <Navbar.Text className="bits">
 
               {usuario != null ? (
-             <div>Usuario: {usuario.Nombre_usuario} ${usuario.Bits}Bits</div>):(
+             <div>Usuario: {usuario.Nombre} ${usuario.Bits}Bits</div>):(
              <p>CargandoBits...</p>)}
             </Navbar.Text>
           </Navbar>

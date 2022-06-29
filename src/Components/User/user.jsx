@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import { NavBaru} from '../Common/index_common';
 import './user.css';
 // import {Container,Button, Card,Modal} from 'react-bootstrap';
-import laptop from './../../Components/Assets/laptop.png'
+import defaultImage from './../../Components/Assets/default.png'
 // import { useState } from 'react';
 // import Model from './Model';
 import Cards from './cards';
@@ -27,7 +27,7 @@ function User (props){
         <NavBaru
           id={id}
         /> 
-        <div className='cardsu'>
+        <div className='Productos'>
         {products != null ?(
                 products.map(product =>(
 
@@ -35,7 +35,7 @@ function User (props){
                     id={product.Id_Producto}
                     NombreP={product.Nombre_Producto}
                     InfoP={product.Descripcion}
-                    NameImage={laptop}
+                    NameImage={defaultImage}
                     price={product.Precio}
                     disponibility={product.Existencia}
                     />

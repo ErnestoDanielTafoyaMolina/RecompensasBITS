@@ -13,7 +13,7 @@ import Products from './Views/Products/index_p';
 // import laptop from './../../Components/Assets/laptop.png';
 
 import './admin.css';
-import { BrowserRouter,Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter,Route, Routes } from 'react-router-dom';
 
 
 function Admin (props){
@@ -25,7 +25,7 @@ function Admin (props){
                 <Route path='Requests' element={<Request />}/>
                 <Route path='Products' element={<Products/>}/>
 
-                <Route path='*' element={<Navigate replace to="/" />}/>
+                <Route path='Products' element={<Products/>} />
 
             </Route>
         </Routes>

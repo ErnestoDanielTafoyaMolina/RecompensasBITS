@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Modal} from 'react-bootstrap'
+import {Button, Modal, Form} from 'react-bootstrap'
 import { useState, useEffect} from "react";
 //peticion
 import {getUniqueProduct} from '../../../../../api/petitions_index';
@@ -34,7 +34,53 @@ function EditModals (props) {
             </Modal.Header>
             <Modal.Body>
               { producto != null ? (
-              <p>Ha seleccionado el producto:{producto.Nombre_Producto} con el precio: {producto.Precio} Bits Confirmar para guardar cambios</p>  
+                          <Form>
+                          <Form.Group className="mb-3">
+                              <Form.Label>Nombre del Producto</Form.Label>
+                              <Form.Control 
+                                  type="text" 
+                                  placeholder="producto..." 
+                                  name='name'
+                                  value={producto.Nombre_Producto}/>
+                          </Form.Group>
+          
+                          <Form.Group className="mb-3">
+                              <Form.Label>Descripcion</Form.Label>
+                              <Form.Control 
+                                  type="text" 
+                                  placeholder="breve descripcion del producto..." 
+                                  name='desc'
+                                  value={producto.Descripcion}/>
+                          </Form.Group>
+          
+                          <Form.Group className="mb-3">
+                              <Form.Label>Precio</Form.Label>
+                              <Form.Control 
+                                  type="number" 
+                                  placeholder="precio en BITS" 
+                                  name='price'
+                                  value={producto.Precio} />
+                          </Form.Group>
+          
+                          <Form.Group className="mb-3">
+                              <Form.Label>¿Está disponible el producto?</Form.Label>
+                              <Form.Control 
+                                  type="text" 
+                                  placeholder="precio en BITS" 
+                                  name='stock'
+                                  value={producto.Existencia} />
+                          </Form.Group>
+          
+                          <Form.Group className="mb-3">
+                              <Form.Label>Imagen</Form.Label>
+                              <Form.Control 
+                                  type="file" 
+                                  placeholder="producto..." 
+                                  name='image'
+                                  value={producto.Imagen}/>
+                          </Form.Group>
+          
+                      </Form> 
               ):(
                 'Cargando...'
               )}

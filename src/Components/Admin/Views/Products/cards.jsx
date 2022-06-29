@@ -18,7 +18,7 @@ function Cartas(props){
 
     return (
         <>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem', padding:'10px' }}>
             <Card.Img variant="top" src={imgProducto} />
                 <Card.Body>
                     <Card.Title>{nombreProduct}</Card.Title>
