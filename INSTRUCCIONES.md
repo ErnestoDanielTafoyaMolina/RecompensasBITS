@@ -12,3 +12,7 @@ DB_USER="its-academy"
 DB_PASSWORD="Infinity01?"
 DB_SERVER="it-seekersdev.ddns.net"
 DB_DATABASE="BITS_Recompensas"
+
+## Para el deploy
+
+npm i @babel/plugin-transform-runtime -D

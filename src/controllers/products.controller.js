@@ -47,9 +47,9 @@ export const getProductById = async (req, res) => {
         .input("name", sql.VarChar, name)
         .input("desc", sql.Text, description)
         .input("price",sql.Int,price)
-        .input("stock", sql.Int, quantity)
+        .input("stock", sql.VarChar, quantity)
         .input("image", sql.Image, image)
-        .query("INSERT INTO [BITS_Recompensas].[dbo].[Productos] (Nombre_Producto, Descripcion, Precio, Existencia, Imagen) VALUES (@name,@description,@price,@quantity,@image);");
+        .query("INSERT INTO [BITS_Recompensas].[dbo].[Productos] (Nombre_Producto, Descripcion, Precio, Existencia, Imagen) VALUES (@name,@desc,@price,@stock,@image);");
   
       res.json({ name, description, price, quantity, image});
     } catch (error) {
@@ -93,9 +93,9 @@ export const getProductById = async (req, res) => {
         .input("price",sql.Int,price)
         .input("stock", sql.Int, quantity)
         .input("image", sql.Image, image)
-        .input("id", req.params.id)
-        .query("UPDATE [BITS_Recompensas].[dbo].[Productos] SET Nombre_Producto = @Name Descripcion = @description Precio = @price Existencia = @quantity Existencia Imagen = @image Existencia",);
-      res.json({ name, description, quantity });
+        .input("id", sql.Int, req.params.id)
+        .query("UPDATE [BITS_Recompensas].[dbo].[Productos] SET Nombre_Producto = @Name Descripcion = @desc Precio = @price Existencia = @quantity Imagen = @image",);
+      res.json({ name, description, price, quantity, image });
     } catch (error) {
       res.status(500);
       res.send(error.message);
