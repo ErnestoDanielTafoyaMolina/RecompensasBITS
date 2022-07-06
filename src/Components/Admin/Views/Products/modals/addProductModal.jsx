@@ -10,7 +10,14 @@ import AddIcon from '@mui/icons-material/Edit';
 
 function AddProductModal(props){
     //post hooks
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState({
+      name:'',
+      desc:'',
+      price:0,
+      stock:'',
+      img:null
+
+    });
     const url='http://localhost:3001/api/products';
     useEffect(()=>{
       const getPosts = async () => {
@@ -19,20 +26,35 @@ function AddProductModal(props){
       };
       getPosts();
     },[]);
+    const cambioDeValor = (name,valor)=>{
+      switch(name){
+        case 'name':
+          console.log('nombre',valor);
+          break
+        case 'desc':
+          console.log('descripcion',valor);
+          break
+        case 'price':
+          console.log('precio',valor);
+          break
+        case 'stock':
+          console.log('¿Hay?',valor);
+          break
+        case 'image':
+          console.log('imagen',valor);
+          break
+        
+        default:
+          console.log('default',valor)
+      }
+    }
 
     const addPost = async () =>{
-      try {
-        const post = {
-          name:'name',
-          desc:'desc',
-          price:2,
-          stock:'stock',
-          image:'image'
-        };
-        await axios.post(url,post);
-        setPosts([post,...posts]);
+      console.log(cambioDeValor());
+      try{
+        await axios.post(url,posts);
       } catch (error) {
-        console.log(error,'jaja que pendejo el servidor no lo quiere aaaaaaah')
+        console.log('error',error)
       }
     }
     //modal hooks
@@ -58,7 +80,9 @@ function AddProductModal(props){
                     <Form.Control 
                         type="text" 
                         placeholder="producto..." 
-                        name='name'/>
+                        onBlur={(e) => cambioDeValor('name',e.target.value)}
+                        required
+                         />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -66,7 +90,9 @@ function AddProductModal(props){
                     <Form.Control 
                         type="text" 
                         placeholder="breve descripcion del producto..." 
-                        name='desc'/>
+                        onBlur={(e) => cambioDeValor('desc',e.target.value)}
+                        required
+                        />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -74,15 +100,19 @@ function AddProductModal(props){
                     <Form.Control 
                         type="number" 
                         placeholder="precio en BITS" 
-                        name='price' />
+                        onBlur={(e) => cambioDeValor('price',e.target.value)}
+                        required    
+                         />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <Form.Label>¿Está disponible el producto?</Form.Label>
                     <Form.Control 
                         type="text" 
-                        placeholder="precio en BITS" 
-                        name='stock' />
+                        placeholder="¿Está disponible?" 
+                        onBlur={(e) => cambioDeValor('stock',e.target.value)}
+                        required
+                         />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -90,7 +120,8 @@ function AddProductModal(props){
                     <Form.Control 
                         type="file" 
                         placeholder="producto..." 
-                        name='image'/>
+                        onBlur={(e) => cambioDeValor('img',e.target.value)}
+                        />
                 </Form.Group>
 
             </Form>
@@ -99,7 +130,7 @@ function AddProductModal(props){
               <Button variant="outline-danger" onClick={handleClose}>
                 Cancelar
               </Button>
-              <Button variant="outline-success" onClick={addPost}>
+              <Button variant="outline-success" onClick={(e)=>addPost()}>
                 Confirmar
               </Button>
             </Modal.Footer>

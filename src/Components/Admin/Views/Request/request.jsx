@@ -32,7 +32,7 @@ return(
         <tbody>
             {users != null ?(
                 users.map(usuario =>(
-                    <TablasUsuario 
+                    <TablasUsuario key={usuario.Nombre}
                     idUsuario={usuario.Id_usuario}
                     nombreUsuario={usuario.Nombre}
                     apellidoUsuario={usuario.Apellido}

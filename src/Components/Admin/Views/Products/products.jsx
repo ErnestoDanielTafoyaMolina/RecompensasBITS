@@ -9,11 +9,13 @@ import AddProductModal from './modals/addProductModal';
 import { getProducts } from '../../../../api/petitions_index';
 
 function Products(props){
+    const [guardado, setGuardado] = useState(false)
     const [products, setProducts]= useState(null);
 
     useEffect(()=>{
       getProducts(setProducts)
-  },[]) 
+      setGuardado(false)
+  },[guardado]) 
     return(
         <>
         <div className="containerAdd">
@@ -23,13 +25,15 @@ function Products(props){
             {products != null ?(
                 products.map(product =>(
             
-                    <Cards className='card'
+                    <Cards
+                    className='card'
                     id={product.Id_Producto}
                     name={product.Nombre_Producto}
                     info={product.Descripcion}
                     img={laptop}
                     price={product.Precio}
                     disponibility={product.Existencia}
+                    setGuardado={setGuardado}
                     />
                 ))
             ):('Cargando...')}

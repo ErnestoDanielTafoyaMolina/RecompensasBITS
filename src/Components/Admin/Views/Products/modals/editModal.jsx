@@ -3,17 +3,56 @@ import {Button, Modal, Form} from 'react-bootstrap'
 import { useState, useEffect} from "react";
 //peticion
 import {getUniqueProduct} from '../../../../../api/petitions_index';
+import axios from 'axios';
 
 import EditIcon from '@mui/icons-material/Edit';
 function EditModals (props) {
     //hooks
+    const [posts, setPosts] = useState({
+      name:'',
+      desc:'',
+      price:0,
+      stock:'',
+      img:null
+
+    });
+    const url='http://localhost:3001/api/products';
         const [producto, setProducto] = useState(null);
     
         useEffect(()=>{
           const idProducto=props.idProducto;
           getUniqueProduct( idProducto, setProducto );
         }, [props.idProducto])
-          
+        const cambioDeValor = (name,valor)=>{
+          switch(name){
+            case 'name':
+              console.log('nombre',valor);
+              break
+            case 'desc':
+              console.log('descripcion',valor);
+              break
+            case 'price':
+              console.log('precio',valor);
+              break
+            case 'stock':
+              console.log('¿Hay?',valor);
+              break
+            case 'image':
+              console.log('imagen',valor);
+              break
+            
+            default:
+              console.log('default',valor)
+          }
+        }
+
+        const UpdatePost = async () =>{
+          try{
+            await axios.post(url,posts);
+          } catch (error) {
+            console.log('error',error)
+          }
+        }
         const [show, setShow] = useState(false);
     
       const handleClose = () => setShow(false);
@@ -35,50 +74,50 @@ function EditModals (props) {
             <Modal.Body>
               { producto != null ? (
                           <Form>
-                          <Form.Group className="mb-3">
-                              <Form.Label>Nombre del Producto</Form.Label>
-                              <Form.Control 
-                                  type="text" 
-                                  placeholder="producto..." 
-                                  name='name'
-                                  value={producto.Nombre_Producto}/>
-                          </Form.Group>
-          
-                          <Form.Group className="mb-3">
-                              <Form.Label>Descripcion</Form.Label>
-                              <Form.Control 
-                                  type="text" 
-                                  placeholder="breve descripcion del producto..." 
-                                  name='desc'
-                                  value={producto.Descripcion}/>
-                          </Form.Group>
-          
-                          <Form.Group className="mb-3">
-                              <Form.Label>Precio</Form.Label>
-                              <Form.Control 
-                                  type="number" 
-                                  placeholder="precio en BITS" 
-                                  name='price'
-                                  value={producto.Precio} />
-                          </Form.Group>
-          
-                          <Form.Group className="mb-3">
-                              <Form.Label>¿Está disponible el producto?</Form.Label>
-                              <Form.Control 
-                                  type="text" 
-                                  placeholder="precio en BITS" 
-                                  name='stock'
-                                  value={producto.Existencia} />
-                          </Form.Group>
-          
-                          <Form.Group className="mb-3">
-                              <Form.Label>Imagen</Form.Label>
-                              <Form.Control 
-                                  type="file" 
-                                  placeholder="producto..." 
-                                  name='image'
-                                  value={producto.Imagen}/>
-                          </Form.Group>
+                            <Form.Group className="mb-3">
+                                  <Form.Label>Nombre del Producto</Form.Label>
+                                  <Form.Control 
+                                      type="text" 
+                                      placeholder={producto.Nombre_Producto} 
+                                      onBlur={(e) => cambioDeValor('name',e.target.value)}
+                                      />
+                              </Form.Group>
+
+                              <Form.Group className="mb-3">
+                                  <Form.Label>Descripcion</Form.Label>
+                                  <Form.Control 
+                                      type="text" 
+                                      placeholder={producto.Descripcion} 
+                                      onBlur={(e) => cambioDeValor('desc',e.target.value)}
+                                      />
+                              </Form.Group>
+
+                              <Form.Group className="mb-3">
+                                  <Form.Label>Precio</Form.Label>
+                                  <Form.Control 
+                                      type="number" 
+                                      placeholder={producto.Precio} 
+                                      onBlur={(e) => cambioDeValor('price',e.target.value)}
+                                      />
+                              </Form.Group>
+
+                              <Form.Group className="mb-3">
+                                  <Form.Label>¿Está disponible el producto?</Form.Label>
+                                  <Form.Control 
+                                      type="text" 
+                                      placeholder={producto.Existencia} 
+                                      onBlur={(e) => cambioDeValor('stock',e.target.value)}
+                                      />
+                              </Form.Group>
+
+                              <Form.Group className="mb-3">
+                                  <Form.Label>Imagen</Form.Label>
+                                  <Form.Control 
+                                      type="file"  
+                                      onBlur={(e) => cambioDeValor('img',e.target.value)}
+                                      />
+                              </Form.Group>
+
           
                       </Form> 
               ):(
@@ -89,7 +128,7 @@ function EditModals (props) {
               <Button variant="outline-danger" onClick={handleClose}>
                 Cancelar
               </Button>
-              <Button variant="outline-success" onClick={handleClose}>
+              <Button variant="outline-success" onClick={(e)=>UpdatePost()}>
                 Confirmar
               </Button>
             </Modal.Footer>

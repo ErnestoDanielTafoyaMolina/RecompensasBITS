@@ -10,7 +10,7 @@ function TablasUsuario(props){
 
     return(
         <> 
-        <tr>
+        <tr key={nameUser}>
         <td>
             {idUser}</td>
             <td>{nameUser}</td>

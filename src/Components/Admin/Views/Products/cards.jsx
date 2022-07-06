@@ -8,7 +8,6 @@ import './../../admin.css';
 
 function Cartas(props){
 
-    // const idProducto=props.id;
     const idProducto=props.id;
     const imgProducto = props.img;
     const nombreProduct=props.name;
@@ -18,7 +17,7 @@ function Cartas(props){
 
     return (
         <>
-        <Card style={{ width: '18rem', padding:'10px' }}>
+        <Card style={{ width: '18rem', padding:'10px' }} >
             <Card.Img variant="top" src={imgProducto} />
                 <Card.Body>
                     <Card.Title>{nombreProduct}</Card.Title>
@@ -32,11 +31,12 @@ function Cartas(props){
 
                         <div className="buttons">
                             {/*Modal para editar*/}
-                            
                             <EditModals 
                             idProducto={idProducto}/>
+                            {/*Modal para borrar*/}
                             <DeleteModals 
-                            idProducto={idProducto}/>
+                            idProducto={idProducto}
+                            setGuardado={props.setGuardado}/>
                         </div>
                         </Card.Body>
                 </Card>

@@ -11,7 +11,7 @@ import {Outlet, Link} from "react-router-dom";
 function NavBar(){
 
     return (<>          
-        <Navbar className="bg-blue" variant="dark">
+        <Navbar className="bg-blue md-12 " variant="dark">
             <Container className="containerP">
             
             <Navbar.Brand as={Link} to="/">

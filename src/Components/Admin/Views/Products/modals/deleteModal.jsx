@@ -18,11 +18,11 @@ function DeleteModals (props) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // const NP=props.name;
-  // const IP=props.info;
+
     const eliminar = (id)=>{
       deleteProductById(props.idProducto);
-      window.location.reload();
+      props.setGuardado(true);
+      handleClose();  
     }
   return (
     <>
