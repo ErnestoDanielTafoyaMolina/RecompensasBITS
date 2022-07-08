@@ -97,12 +97,13 @@ export const getProductById = async (req, res) => {
       const pool = await getConnection();
   
       await pool.request()
+        .input('id',req.params.id)
         .input('name', sql.VarChar, name)
         .input('desc', sql.Text, description)
         .input('price',sql.Int, price)
         .input('stock',sql.VarChar, quantity)
         .input('image',sql.Image, image)
-        .query("UPDATE [BITS_Recompensas].[dbo].[Productos] SET Nombre_Producto = @Name, Descripcion = @desc, Precio = @price, Existencia = @stock, Imagen = @image");
+        .query("UPDATE [BITS_Recompensas].[dbo].[Productos] SET Nombre_Producto = @Name, Descripcion = @desc, Precio = @price, Existencia = @stock, Imagen = @image WHERE Id_Producto= @Id");
   
       res.json({ name, description, price, quantity, image});
     } catch (error) {
