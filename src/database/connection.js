@@ -22,6 +22,7 @@ export async function getConnection(){
   } catch (error) {
     console.log("La conexion no ha sido exitosa debido a..." , error)
   }
-}
-export { sql } 
+};
+
+export { sql }
 
