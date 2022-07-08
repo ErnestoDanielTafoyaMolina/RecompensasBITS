@@ -56,6 +56,8 @@ function AddProductModal(props){
       } catch (error) {
         console.log('error',error)
       }
+      props.setGuardado(true);
+      handleClose();
     }
     //modal hooks
     const [show, setShow] = useState(false);
