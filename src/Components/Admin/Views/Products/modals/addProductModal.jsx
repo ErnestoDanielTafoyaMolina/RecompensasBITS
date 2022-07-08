@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal, Form } from 'react-bootstrap'
-import { useState, useEffect} from "react";
+import { useState } from "react";
 
 import axios from 'axios';
 
@@ -10,49 +10,49 @@ import AddIcon from '@mui/icons-material/Edit';
 
 function AddProductModal(props){
     //post hooks
+    
     const [posts, setPosts] = useState({
       name:'',
       desc:'',
       price:0,
       stock:'',
-      img:null
+      img:''
 
     });
     const url='http://localhost:3001/api/products';
-    useEffect(()=>{
-      const getPosts = async () => {
-        const { data: res } = await axios.get(url);
-        setPosts(res);
-      };
-      getPosts();
-    },[]);
+
     const cambioDeValor = (name,valor)=>{
       switch(name){
         case 'name':
           console.log('nombre',valor);
+          setPosts({...posts,name:valor.target.value})
           break
         case 'desc':
           console.log('descripcion',valor);
+          setPosts({...posts,desc:valor.target.value})
           break
         case 'price':
           console.log('precio',valor);
+          setPosts({...posts,price:parseInt(valor.target.value)})
           break
         case 'stock':
           console.log('¿Hay?',valor);
+          setPosts({...posts,stock:valor.target.value})
           break
-        case 'image':
-          console.log('imagen',valor);
-          break
-        
+        case 'img':
+          console.log('img',valor);
+          setPosts({...posts,img:valor.target.value})
+          break        
         default:
-          console.log('default',valor)
+          console.log('nada seleccionado')
       }
     }
 
     const addPost = async () =>{
-      console.log(cambioDeValor());
+      console.log('insertado:',posts.name);
       try{
         await axios.post(url,posts);
+        console.log(posts)
       } catch (error) {
         console.log('error',error)
       }
@@ -120,7 +120,7 @@ function AddProductModal(props){
                     <Form.Control 
                         type="file" 
                         placeholder="producto..." 
-                        onBlur={(e) => cambioDeValor('img',e.target.value)}
+                        onChange={(e) => cambioDeValor('img',e.target.value)}
                         />
                 </Form.Group>
 

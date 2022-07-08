@@ -14,15 +14,15 @@ function NavBar(){
         <Navbar className="bg-blue md-12 " variant="dark">
             <Container className="containerP">
             
-            <Navbar.Brand as={Link} to="/">
+            <Navbar.Brand as={Link} to="/Products">
               <Image src={logo} className="logoP" />
             </Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/Requests">
-                <h3>Requests</h3>
+                <h3>Usuarios</h3>
               </Nav.Link>
               <Nav.Link as={Link} to="/Products">
-                <h3>Products</h3>
+                <h3>Productos</h3>
               </Nav.Link>
             </Nav>
             </Container>

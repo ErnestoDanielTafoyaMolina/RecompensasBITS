@@ -27,22 +27,26 @@ function EditModals (props) {
           switch(name){
             case 'name':
               console.log('nombre',valor);
+              setPosts({...posts,name:valor.target.value})
               break
             case 'desc':
               console.log('descripcion',valor);
+              setPosts({...posts,desc:valor.target.value})
               break
             case 'price':
               console.log('precio',valor);
+              setPosts({...posts,price:parseInt(valor.target.value)})
               break
             case 'stock':
               console.log('¿Hay?',valor);
+              setPosts({...posts,stock:valor.target.value})
               break
-            case 'image':
-              console.log('imagen',valor);
-              break
-            
+            case 'img':
+              console.log('img',valor);
+              setPosts({...posts,img:valor.target.value})
+              break        
             default:
-              console.log('default',valor)
+              console.log('nada seleccionado')
           }
         }
 
