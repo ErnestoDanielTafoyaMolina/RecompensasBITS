@@ -19,7 +19,8 @@ function Products(props){
     return(
         <>
         <div className="containerAdd">
-                <AddProductModal />
+                <AddProductModal 
+                setGuardado={setGuardado} />
             </div>
             <div className="Productos">
             {products != null ?(

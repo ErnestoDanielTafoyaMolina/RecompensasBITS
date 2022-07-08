@@ -25,23 +25,23 @@ function AddProductModal(props){
       switch(name){
         case 'name':
           console.log('nombre',valor);
-          setPosts({...posts,name:valor.target.value})
+          setPosts({...posts,name:valor})
           break
         case 'desc':
           console.log('descripcion',valor);
-          setPosts({...posts,desc:valor.target.value})
+          setPosts({...posts,desc:valor})
           break
         case 'price':
           console.log('precio',valor);
-          setPosts({...posts,price:parseInt(valor.target.value)})
+          setPosts({...posts,price:parseInt(valor)})
           break
         case 'stock':
           console.log('¿Hay?',valor);
-          setPosts({...posts,stock:valor.target.value})
+          setPosts({...posts,stock:valor})
           break
         case 'img':
           console.log('img',valor);
-          setPosts({...posts,img:valor.target.value})
+          setPosts({...posts,img:valor})
           break        
         default:
           console.log('nada seleccionado')

@@ -32,7 +32,8 @@ function Cartas(props){
                         <div className="buttons">
                             {/*Modal para editar*/}
                             <EditModals 
-                            idProducto={idProducto}/>
+                            idProducto={idProducto}
+                            setGuardado={props.setGuardado}/>
                             {/*Modal para borrar*/}
                             <DeleteModals 
                             idProducto={idProducto}
