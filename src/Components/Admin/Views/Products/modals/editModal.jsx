@@ -2,13 +2,14 @@ import React from "react";
 import {Button, Modal, Form} from 'react-bootstrap'
 import { useState, useEffect} from "react";
 //peticion
-import {getUniqueProduct} from '../../../../../api/petitions_index';
+import {getUniqueProduct } from '../../../../../api/petitions_index';
 import axios from 'axios';
 
 import EditIcon from '@mui/icons-material/Edit';
 function EditModals (props) {
     //hooks
     const [posts, setPosts] = useState({
+      id:'',
       name:'',
       desc:'',
       price:0,
@@ -16,13 +17,14 @@ function EditModals (props) {
       img:null
 
     });
-    const url='http://localhost:3001/api/products';
         const [producto, setProducto] = useState(null);
     
         useEffect(()=>{
           const idProducto=props.idProducto;
           getUniqueProduct( idProducto, setProducto );
         }, [props.idProducto])
+
+
         const cambioDeValor = (name,valor)=>{
           switch(name){
             case 'name':
@@ -50,12 +52,18 @@ function EditModals (props) {
           }
         }
 
-        const UpdatePost = async () =>{
+        const UpdatePost = async (id,state) =>{
           try{
-            await axios.put(url,posts);
+            await axios.put(`http://localhost:3001/api/products/${id}`,state);
           } catch (error) {
             console.log('error',error)
           }
+        }
+
+        const updateProductById = (id)=>{
+          UpdatePost(props.idProducto,posts);
+          props.setGuardado(true);
+          handleClose();
         }
         const [show, setShow] = useState(false);
     
@@ -78,11 +86,12 @@ function EditModals (props) {
             <Modal.Body>
               { producto != null ? (
                           <Form>
+                            <Form className="label">id:{producto.Id_Producto}</Form>
                             <Form.Group className="mb-3">
                                   <Form.Label>Nombre del Producto</Form.Label>
                                   <Form.Control 
                                       type="text" 
-                                      placeholder={producto.Nombre_Producto} 
+                                      defaultValue={producto.Nombre_Producto} 
                                       onBlur={(e) => cambioDeValor('name',e.target.value)}
                                       />
                               </Form.Group>
@@ -91,7 +100,7 @@ function EditModals (props) {
                                   <Form.Label>Descripcion</Form.Label>
                                   <Form.Control 
                                       type="text" 
-                                      placeholder={producto.Descripcion} 
+                                      defaultValue={producto.Descripcion} 
                                       onBlur={(e) => cambioDeValor('desc',e.target.value)}
                                       />
                               </Form.Group>
@@ -100,7 +109,7 @@ function EditModals (props) {
                                   <Form.Label>Precio</Form.Label>
                                   <Form.Control 
                                       type="number" 
-                                      placeholder={producto.Precio} 
+                                      defaultValue={producto.Precio} 
                                       onBlur={(e) => cambioDeValor('price',e.target.value)}
                                       />
                               </Form.Group>
@@ -109,7 +118,7 @@ function EditModals (props) {
                                   <Form.Label>¿Está disponible el producto?</Form.Label>
                                   <Form.Control 
                                       type="text" 
-                                      placeholder={producto.Existencia} 
+                                      defaultValue={producto.Existencia} 
                                       onBlur={(e) => cambioDeValor('stock',e.target.value)}
                                       />
                               </Form.Group>
@@ -132,7 +141,7 @@ function EditModals (props) {
               <Button variant="outline-danger" onClick={handleClose}>
                 Cancelar
               </Button>
-              <Button variant="outline-success" onClick={(e)=>UpdatePost()}>
+              <Button variant="outline-success" onClick={(e)=>updateProductById()}>
                 Confirmar
               </Button>
             </Modal.Footer>
