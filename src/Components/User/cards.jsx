@@ -20,7 +20,7 @@ function Cartas(props){
                     <Card.Text>
                     <ul>
                             <li>Descripcion: {DescProduct}</li>
-                            <li>Precio: {price} BITS</li>
+                            <li>Precio: {price} Bits</li>
                             <li>¿Hay en existencia?: {disponibility}</li>
                         </ul>
                     </Card.Text>

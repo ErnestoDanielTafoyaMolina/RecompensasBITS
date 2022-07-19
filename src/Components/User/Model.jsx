@@ -21,6 +21,15 @@ function Modals (props) {
   // const NP=props.name;
   // const IP=props.info;
 
+  function handleSubmit (e){
+    e.preventDefault();
+
+    const idProducto=props.id;
+
+    console.log('You clicked submit.', idProducto);
+    setShow(false);
+  }
+
   return (
     <>
       <Button variant="warning" onClick={handleShow}>
@@ -29,20 +38,20 @@ function Modals (props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Confirmacion</Modal.Title>
+          <Modal.Title>Confirmación</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           { producto != null ? (
-          <p>Ha seleccionado el producto:{producto.Nombre_Producto} con el precio: {producto.Precio} Bits¿Seguro que quiere adquirirlo?</p>  
+          <p>Ha seleccionado el producto: <b>{producto.Nombre_Producto}</b> con el precio: <b>{producto.Precio}</b> Bits ¿Seguro que quiere adquirirlo?</p>  
           ):(
             'Cargando...'
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-danger" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="outline-success" onClick={handleClose}>
+          <Button variant="success" onClick={handleSubmit}>
             Confirmar
           </Button>
         </Modal.Footer>

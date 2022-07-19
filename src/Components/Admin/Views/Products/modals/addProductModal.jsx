@@ -84,7 +84,7 @@ function AddProductModal(props){
                         placeholder="producto..." 
                         onBlur={(e) => cambioDeValor('name',e.target.value)}
                         required
-                         />
+                        />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -104,7 +104,7 @@ function AddProductModal(props){
                         placeholder="precio en BITS" 
                         onBlur={(e) => cambioDeValor('price',e.target.value)}
                         required    
-                         />
+                        />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -114,7 +114,7 @@ function AddProductModal(props){
                         placeholder="¿Está disponible?" 
                         onBlur={(e) => cambioDeValor('stock',e.target.value)}
                         required
-                         />
+                        />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
