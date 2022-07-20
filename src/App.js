@@ -14,7 +14,7 @@ import errorImage from './assets/img/error.png'
 function App() {
 
     //variables
-    const idUsuario=2;
+    const idUsuario=15;
 
     //hooks
     const [usuario,setUsuario] = useState(null);

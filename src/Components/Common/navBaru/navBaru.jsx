@@ -10,10 +10,11 @@ import {Link, Outlet} from "react-router-dom";
 import './navBaru.css';
 
 
+
+
 function NavBaru(props){
 
   
-
     const [usuario, setUsuario] = useState(null);
 
     useEffect(()=>{
@@ -25,11 +26,12 @@ function NavBaru(props){
 
     return (
         <>
+        <section>
         <Navbar className="bg-blue" variant="dark">
             <Container className="containerP">
 
             
-            <Navbar.Brand href="">
+            <Navbar.Brand as={Link} to="/Principal">
               <Image src={logo} className="logoP" />
             </Navbar.Brand>
             <Nav className="me-auto">
@@ -45,11 +47,12 @@ function NavBaru(props){
             </Nav>
             </Container>
             <Navbar.Text className="bits">
-              {usuario != null ? (
-              <div>Usuario: {usuario.Nombre} ${usuario.Bits}Bits</div>):(
-              <p>CargandoBits...</p>)}
+             {usuario != null ? (
+              <div>Usuario: {usuario.Nombre} ${usuario.Bits} Bits</div>):(
+              <p>Cargando Bits...</p>)}
               </Navbar.Text>
           </Navbar>
+          </section>
         <section>
           <Outlet></Outlet>
         </section>

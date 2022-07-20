@@ -6,7 +6,7 @@ import Request from './Views/Request/index_req';
 import Products from './Views/Products/index_p';
 
 import './admin.css';
-import { BrowserRouter,Route, Routes } from 'react-router-dom';
+import { BrowserRouter,Navigate,Route, Routes } from 'react-router-dom';
 
 
 function Admin (props){
@@ -15,10 +15,10 @@ function Admin (props){
         <BrowserRouter>
         <Routes>
             <Route path='/' element={<NavBar/>}>
+                <Route index element={<Products/>}/>
+                <Route path='Products'element={<Products/>}/>
                 <Route path='Requests' element={<Request />}/>
-                <Route path='Products' element={<Products/>}/>
-
-                <Route path='Products' element={<Products/>} />
+                <Route path='*' elemnt={<Navigate to="/"/>} />
 
             </Route>
         </Routes>
