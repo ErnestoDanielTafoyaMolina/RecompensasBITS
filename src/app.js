@@ -7,7 +7,7 @@ import config from './config';
 
 //import routes 
 import usersRoutes   from './routes/users.routes';
-import payrollRoutes from './routes/payroll.routes';
+import petitionRoutes from './routes/petitions.routes';
 import productRoutes from './routes/products.routes';
 
 const app = express();
@@ -23,7 +23,7 @@ app.use(express.json());
 
 //routes
 app.use("/api",usersRoutes);
-app.use("/api",payrollRoutes);
+app.use("/api",petitionRoutes);
 app.use("/api",productRoutes);
 
 export default app;
