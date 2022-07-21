@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import axios from 'axios';
 
-import AddIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 
 
 
@@ -17,8 +17,8 @@ function AddProductModal(props){
       price:0,
       stock:'',
       img:''
-
     });
+    
     const url='http://localhost:3001/api/products';
 
     const cambioDeValor = (name,valor)=>{
