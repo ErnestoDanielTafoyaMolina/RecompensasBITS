@@ -19,7 +19,11 @@ export const getPetitions = async (req,res) => {
     const pool = await getConnection();
     const idProducto=req.body.idP;
     const idUsuario = req.body.idU;
-
+    
+    /* validacion para evitar que se den de alta valores nulos */
+    if(idUsuario==null || idProducto==null){
+      return res.status(400).json({ msg: 'Por favor llena los campos solicitados'});
+    }
     await pool.request()
     .input("idU",sql.Int,idUsuario)
     .input('idP',sql.Int,idProducto)
