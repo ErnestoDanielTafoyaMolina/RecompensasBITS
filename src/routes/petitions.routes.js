@@ -3,7 +3,8 @@ import { getPetitions,
          getPendientPetitions,
          postPetition,
          setAceptedPetitions,
-         setDeclinedPetitions
+         setDeclinedPetitions,
+         getAllPetitionsHistorial
 
 
 } from '../controllers/petitions.controllers';
@@ -18,6 +19,10 @@ router.post('/petition/pendient',postPetition)
 //endpoint para aceptar peticion
 router.put('/petition/acepted'),setAceptedPetitions;
 //endpoint para rechazar la peticion
-router.put('/petition/declined',setDeclinedPetitions)
+router.put('/petition/declined',setDeclinedPetitions);
+//endpoint para historial general
+router.get('/historial',getAllPetitionsHistorial);
+//endpoint para el historial individual
+router.get('/historial/:id');
 
 export default router;
