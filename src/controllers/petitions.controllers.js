@@ -19,7 +19,7 @@ export const getPetitions = async (req,res) => {
     const pool = await getConnection();
     const idProducto=req.body.idP;
     const idUsuario = req.body.idU;
-    
+
     /* validacion para evitar que se den de alta valores nulos */
     if(idUsuario==null || idProducto==null){
       return res.status(400).json({ msg: 'Por favor llena los campos solicitados'});
@@ -50,4 +50,31 @@ export const getPetitions = async (req,res) => {
     const pool = await getConnection();
     const decline = await pool.request().query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Rechazada' WHERE Id_Usuario = @idU AND Id_Producto = @id")
     console.log(decline);
+  }
+
+  //historial de peticiones
+
+  export const getAllPetitionsHistorial = async (req,res) => {
+    const pool = await getConnection();
+    const historial = await pool.request()
+    .query("SELECT * FROM RegistroCanjeo");
+    console.log(historial.recordset);
+    res.json(historial.recordset);
+  }
+
+  //historial por id
+
+  export const getPetitionsById = async (req,res) => {
+    try {
+      const pool = await getConnection();
+  
+      const result = await pool
+        .request()
+        .input("id", req.params.id)
+        .query('SELECT * FROM RegistroCanjeo Where Id_usuario = @id');
+      return res.json(result.recordset[0]);
+    } catch (error) {
+      res.status(500);
+      res.send(error.message);
+    }
   }
