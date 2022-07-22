@@ -1,5 +1,5 @@
 import { getConnection, sql } from "../database/connection";
-
+//toma todas las peticiones
 export const getPetitions = async (req,res) => {
     
     try {
@@ -14,18 +14,19 @@ export const getPetitions = async (req,res) => {
     }
 
 };
-
+//crea la peticion (desde usuario)
   export const postPetition = async (req, res) => {
     const pool = await getConnection();
     const idProducto=req.body.idP;
-    const result = await pool
-    .request()
-    // .input("idU",sql.Int,idUsuario)
-    .input('idP',sql.Int,idProducto)
-    .query("INSERT INTO [BITS_Recompensas].[dbo].[Peticiones] (Id_Usuario,Id_Producto,Estado) VALUES (2,@idP,'Pendiente');")
-    res.json(idProducto);
-  };
+    const idUsuario = req.body.idU;
 
+    await pool.request()
+    .input("idU",sql.Int,idUsuario)
+    .input('idP',sql.Int,idProducto)
+    .query("INSERT INTO [BITS_Recompensas].[dbo].[Peticiones] (Id_Usuario,Id_Producto,Estado) VALUES (@idU,@idP,'Pendiente');")
+    res.json({idUsuario,idProducto});
+  };
+//solo recupera las peticiones pendientes
   export const getPendientPetitions = async (req,res) => {
     const pool = await getConnection();
     const petitions = await pool.request().query("SELECT * FROM Peticiones WHERE Estado='Pendiente'");
@@ -34,4 +35,15 @@ export const getPetitions = async (req,res) => {
 
    res.json(petitions.recordset);
   }
-  
+//acepta las peticiones
+  export const setAceptedPetitions = async (req,res) => {
+    const pool = await getConnection();
+    const acept = await pool.request().query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Aceptada' WHERE Id_Usuario = @idU AND Id_Producto = @id")
+    console.log(acept);
+  }
+//rechaza las peticiones
+  export const setDeclinedPetitions = async (req,res) => {
+    const pool = await getConnection();
+    const decline = await pool.request().query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Rechazada' WHERE Id_Usuario = @idU AND Id_Producto = @id")
+    console.log(decline);
+  }
