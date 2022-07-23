@@ -42,13 +42,13 @@ export const getPetitions = async (req,res) => {
 //acepta las peticiones
   export const setAceptedPetitions = async (req,res) => {
     const pool = await getConnection();
-    const acept = await pool.request().query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Aceptada' WHERE Id_Usuario = @idU AND Id_Producto = @id")
+    const acept = await pool.request().input("id",req.params.id).query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Aceptada' WHERE id_Peticiones=@id")
     console.log(acept);
   }
 //rechaza las peticiones
   export const setDeclinedPetitions = async (req,res) => {
     const pool = await getConnection();
-    const decline = await pool.request().query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Rechazada' WHERE Id_Usuario = @idU AND Id_Producto = @id")
+    const decline = await pool.request().input("id",req.params.id).query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Rechazada' WHERE id_Peticiones=@id")
     console.log(decline);
   }
 
