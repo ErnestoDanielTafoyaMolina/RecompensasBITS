@@ -42,13 +42,17 @@ export const getPetitions = async (req,res) => {
 //acepta las peticiones
   export const setAceptedPetitions = async (req,res) => {
     const pool = await getConnection();
-    const acept = await pool.request().input("id",req.params.id).query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Aceptada' WHERE id_Peticiones=@id")
+    const acept = await pool.request()
+    .input("id",req.params.id)
+    .query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Aceptada' WHERE id_Peticiones=@id")
     console.log(acept);
   }
 //rechaza las peticiones
   export const setDeclinedPetitions = async (req,res) => {
     const pool = await getConnection();
-    const decline = await pool.request().input("id",req.params.id).query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Rechazada' WHERE id_Peticiones=@id")
+    const decline = await pool.request()
+    .input("id",req.params.id)
+    .query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Rechazada' WHERE id_Peticiones=@id")
     console.log(decline);
   }
 
@@ -61,8 +65,17 @@ export const getPetitions = async (req,res) => {
     console.log(historial.recordset);
     res.json(historial.recordset);
   }
-
   //historial por id
+
+  export const getHistorialById = async (req,res) => {
+    const pool = await getConnection();
+    const historialById = await pool.request()
+    .input("id", req.params.id)
+    .query("SELECT * FROM RegistroCanjeo WHERE id_RegistroCanjeo = @id")
+    res.json(historialById.recordset);
+  }
+
+  //peticion por id
 
   export const getPetitionsById = async (req,res) => {
     try {
@@ -71,7 +84,7 @@ export const getPetitions = async (req,res) => {
       const result = await pool
         .request()
         .input("id", req.params.id)
-        .query('SELECT * FROM RegistroCanjeo Where Id_usuario = @id');
+        .query('SELECT * FROM Peticiones Where id_Peticiones = @id');
       return res.json(result.recordset[0]);
     } catch (error) {
       res.status(500);
