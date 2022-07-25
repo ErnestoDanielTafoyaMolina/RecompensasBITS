@@ -2,21 +2,25 @@ import React from "react";
 import './usersTable.css'
 
 function TablasUsuario(props){
-    const idUser = props.idUsuario;
-    const nameUser = props.nombreUsuario;
-    const lastNameUser = props.apellidoUsuario;
-    const rolUser = props.rolUsuario;
-    const bitsuser = props.Bits
+    const idPeticion = props.idPeticion;
+    const idUsuario = props.idUsuario;
+    const idProducto = props.idProducto;
+    const estado = props.Estado;
 
+    const rechazarPeticion = () =>{
+        
+    }
     return(
         <> 
-        <tr key={nameUser}>
-        <td>
-            {idUser}</td>
-            <td>{nameUser}</td>
-            <td>{lastNameUser}</td>
-            <td>{rolUser}</td>
-            <td>{bitsuser}</td>
+        <tr key={idProducto}>
+            <td>{idPeticion}</td>
+            <td>{idUsuario}</td>
+            <td>{idProducto}</td>
+            <td>{estado}</td>
+            <td>
+            <button className="btn btn-success">Aceptar</button>
+            <button className="btn btn-danger">Rechazar</button>
+            </td>
         </tr>
         </>
     )

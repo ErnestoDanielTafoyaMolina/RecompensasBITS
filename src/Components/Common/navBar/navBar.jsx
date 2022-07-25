@@ -24,6 +24,9 @@ function NavBar(){
               <Nav.Link as={Link} to="/Products">
                 <h3>Productos</h3>
               </Nav.Link>
+              <Nav.Link as={Link} to="/Mail">
+                <h3>Correo</h3>
+              </Nav.Link>
             </Nav>
             </Container>
           </Navbar>

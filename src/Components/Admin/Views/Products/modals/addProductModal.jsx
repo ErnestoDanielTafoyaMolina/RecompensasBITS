@@ -19,7 +19,7 @@ function AddProductModal(props){
       img:''
 
     });
-    const url='http://localhost:3001/api/products';
+    const url='https://bitsrecompensas.azurewebsites.net/api/products';
 
     const cambioDeValor = (name,valor)=>{
       switch(name){
