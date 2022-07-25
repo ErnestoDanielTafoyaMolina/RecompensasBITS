@@ -1,5 +1,8 @@
 import React from "react";
-import './usersTable.css'
+import ModalA from "./modalA";
+import './usersTable.css';
+import ModalD from "./modalD";
+
 
 function TablasUsuario(props){
     const idPeticion = props.idPeticion;
@@ -18,8 +21,9 @@ function TablasUsuario(props){
             <td>{idProducto}</td>
             <td>{estado}</td>
             <td>
-            <button className="btn btn-success">Aceptar</button>
-            <button className="btn btn-danger">Rechazar</button>
+            <ModalA/>
+            <ModalD/>
+
             </td>
         </tr>
         </>
