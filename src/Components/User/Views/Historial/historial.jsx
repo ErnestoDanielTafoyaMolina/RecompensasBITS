@@ -4,25 +4,46 @@ import Table from 'react-bootstrap/Table';
 
 
 
+function HistorialUsuario(props){
+
+        const id_RegistroCanjeo=props.id_RegistroCanjeo;
+        const Id_usuario=props.Id_usuario;
+        const Id_Producto=props.Id_Producto;
+        const Bits=props.Bits;
+        const FechaConsumo=props.FechaConsumo;
+        const Descripcion=props.Descripcion;
+    return(
+        <>
+        <tr key={Id_usuario}>
+            <td>{id_RegistroCanjeo}</td>
+            <td>{Id_usuario}</td>
+            <td>{Id_Producto}</td>
+            <td>{Bits}</td>
+            <td>{FechaConsumo}</td>
+            <td>{Descripcion}</td>
+        </tr>
+        </>
+    )
+}
 
 
+function Historial (){
+    
 
-function Historial (props){
-    const id_RegistroCanjeo = props.id_RegistroCanjeo;
-    const Id_usuario= props.Id_usuario;
-    const Id_Producto = props.Id_Producto;
-    const Bits = props.Bits
-    const FechaConsumo = props.FechaConsumo
-    const Descripcion = props.Descripcion
-
-    const [historial, setHistorial]= useState(null);
+    const [Historial, setHistorial]= useState([]);
 
     useEffect(()=>{
-        getHistorial(setHistorial)
-        
+        TraerHistorial();
+        getHistorial(setHistorial);
     },[])
 
+
+    function TraerHistorial  () {
+        const historiaal = getHistorial()
     
+        console.log('hola',historiaal)
+        getHistorial(setHistorial)
+      }
 
     return(
         <><>
@@ -31,7 +52,7 @@ function Historial (props){
                 <thead>
                     <tr>
                         <th>Registro</th>
-                        <th>Nombre</th>
+                        <th>Usuario</th>
                         <th>Producto</th>
                         <th>Bits</th>
                         <th>Fecha</th>
@@ -40,14 +61,16 @@ function Historial (props){
                 </thead>
 
                 <tbody>
-                    {historial != null ? (
-                        historial.map(h => (
-                            <Historial key={id_RegistroCanjeo}
+                    {Historial != null ? (
+                        Historial.map(h => (
+                            <HistorialUsuario key={h.id_RegistroCanjeo}
+                                id_RegistroCanjeo={h.id_RegistroCanjeo}
                                 Id_usuario={h.Id_usuario}
                                 Id_Producto={h.Id_Producto}
+                                Bits={h.Bits}
                                 FechaConsumo={h.FechaConsumo}
                                 Descripcion={h.Descripcion}
-                                Bits={h.Bits} />
+                                 />
                         ))
                     ) : ('Cargando...')}
                 </tbody>
@@ -55,13 +78,7 @@ function Historial (props){
             </Table>
         </><>
 
-                <tr key={id_RegistroCanjeo}>
-                    <td>{Id_usuario}</td>
-                    <td>{Id_Producto}</td>
-                    <td>{Bits}</td>
-                    <td>{FechaConsumo}</td>
-                    <td>{Descripcion}</td>
-                </tr>
+               
             </></>
     )
 }
