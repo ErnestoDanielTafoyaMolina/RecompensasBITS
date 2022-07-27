@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const getProducts = async (state) => {
-    const peticion = await axios.get(`http://localhost:3001/api/products`);
+    const peticion = await axios.get(`https://bitsrecompensas-api.azurewebsites.net/api/products`);
     state(peticion.data);
 }
 

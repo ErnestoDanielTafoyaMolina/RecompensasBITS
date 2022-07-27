@@ -42,7 +42,7 @@ function Modals (props) {
 
     const idU=props.idU;
 
-    const url='http://localhost:3001/api/petition/pendient';
+    const url='https://bitsrecompensas-api.azurewebsites.net/api/petition/pendient';
 
   const applyProd = async (Id_Producto:any, idU:any) => {
       await setProd({...prod,idU:idU, idP:Id_Producto});

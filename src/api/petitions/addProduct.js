@@ -3,7 +3,7 @@ const addProduct = async (name,price,image,desc,stock,state)=>{
     try {
         const peticion = await axios({
             method:'post',
-            url:'http://localhost:3001/api/users',
+            url:'https://bitsrecompensas-api.azurewebsites.net/api/users',
             data:{
                 name:`${name}`,
                 price:`${price}`,

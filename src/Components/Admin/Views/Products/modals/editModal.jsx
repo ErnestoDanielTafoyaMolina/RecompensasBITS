@@ -54,7 +54,7 @@ function EditModals (props) {
 
         const UpdatePost = async (id,state) =>{
           try{
-            await axios.put(`http://localhost:3001/api/products/${id}`,state);
+            await axios.put(`https://bitsrecompensas-api.azurewebsites.net/api/products/${id}`,state);
           } catch (error) {
             console.log('error',error)
           }
