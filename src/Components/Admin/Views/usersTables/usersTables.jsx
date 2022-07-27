@@ -1,4 +1,6 @@
 import React from "react";
+import ModalA from "./modalA";
+import ModalD from "./modalD";
 import './usersTable.css'
 
 function TablasUsuario(props){
@@ -6,6 +8,8 @@ function TablasUsuario(props){
     const idUsuario = props.idUsuario;
     const idProducto = props.idProducto;
     const estado = props.Estado;
+
+
 
     const rechazarPeticion = () =>{
         
@@ -18,8 +22,8 @@ function TablasUsuario(props){
             <td>{idProducto}</td>
             <td>{estado}</td>
             <td>
-            <button className="btn btn-success">Aceptar</button>
-            <button className="btn btn-danger">Rechazar</button>
+            <ModalA/>
+            <ModalD/>
             </td>
         </tr>
         </>

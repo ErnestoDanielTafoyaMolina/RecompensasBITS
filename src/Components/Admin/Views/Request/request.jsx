@@ -6,6 +6,7 @@ import Table from 'react-bootstrap/Table';
 import TablasUsuario from "../usersTables/usersTables";
 //import petitions
 import { getPendientPetitions /*getUsers*/ } from "../../../../api/petitions_index";
+import './request.css'
 
 function Request(){
     //hooks
@@ -19,7 +20,7 @@ function Request(){
 
 return(
     <>
-    <h2 className="center">Usuarios</h2>
+    <h2 className="Title">Bandeja De Entrada</h2>
         <div className="container">
         <Table striped bordered hover>
         <thead>
@@ -27,8 +28,8 @@ return(
             <th>Id peticion</th>
             <th>Id usuario</th>
             <th>Id Producto</th>
-            <th>Peticion</th>
-            <th>Rechazar</th>
+            <th>Estado Peticion</th>
+            <th>Respuesta</th>
             </tr>
         </thead>
 

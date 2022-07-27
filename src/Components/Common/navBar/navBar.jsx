@@ -19,7 +19,7 @@ function NavBar(){
             </Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/Requests">
-                <h3>Usuarios</h3>
+                <h3>Peticiones</h3>
               </Nav.Link>
               <Nav.Link as={Link} to="/Products">
                 <h3>Productos</h3>
