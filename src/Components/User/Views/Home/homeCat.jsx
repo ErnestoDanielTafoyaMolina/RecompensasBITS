@@ -1,11 +1,13 @@
 import React from 'react';
+import logo from '../../../Assets/laptop.png'
+import './home.css';
+import './home.js';
 
 function HomeCat(props){
 
     return(
         <>
-        <h3>Home</h3>
-        
+
         </>
 
     )
