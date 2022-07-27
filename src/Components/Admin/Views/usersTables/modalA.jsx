@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 // import _default from 'react-bootstrap/Modal';
 import Modal from 'react-bootstrap/Modal';
+import {aceptpetition} from '../../../../api/petitions/aceptpetition'
 
 
 function ModalA() {
@@ -18,11 +19,11 @@ function ModalA() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>ACEPTACION DE PETICION</Modal.Title>
+          <Modal.Title>ACEPTAR PETICION</Modal.Title>
         </Modal.Header>
         <Modal.Body>Al momento de continuar con la peticion, estas aceptando el canje de este producto, ademas de la resta de los puntos del empleado.</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Cerrar
           </Button>
           <Button variant="primary" onClick={handleClose}>

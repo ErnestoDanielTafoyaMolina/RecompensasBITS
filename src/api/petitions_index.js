@@ -5,6 +5,8 @@ import getUniqueProduct from "./petitions/uniqueProduct";
 import deleteProductById from "./petitions/deleteProduct";
 import updateProductById from "./petitions/updateProductById";
 import getPendientPetitions from "./petitions/getPendientPetitions";
+import setAceptedPetitions from "./petitions/aceptpetition";
+import setDeclinedPetitions from "./petitions/deletepetition";
 export {
     getUsers,
     getProducts,
@@ -12,5 +14,7 @@ export {
     getUniqueProduct,
     deleteProductById,
     updateProductById,
-    getPendientPetitions
+    getPendientPetitions,
+    setAceptedPetitions,
+    setDeclinedPetitions
 }

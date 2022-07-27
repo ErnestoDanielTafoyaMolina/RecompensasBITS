@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 // import _default from 'react-bootstrap/Modal';
 import Modal from 'react-bootstrap/Modal';
+import {deletepetition} from '../../../../api/petitions/declinePetition'
 
 
 function ModalD() {
@@ -22,7 +23,7 @@ function ModalD() {
         </Modal.Header>
         <Modal.Body>Al denegar esta peticion se le llegara a notificar a el empleado el motivo del rechazo de su peticion.</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Cerrar
           </Button>
           <Button variant="primary" onClick={handleClose}>
