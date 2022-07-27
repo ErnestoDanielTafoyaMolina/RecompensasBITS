@@ -64,7 +64,7 @@ function AddProductModal(props){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     
-   return(<>
+    return(<>
 
     <Button variant="success" onClick={handleShow}>
             <AddIcon fontSize="small" />

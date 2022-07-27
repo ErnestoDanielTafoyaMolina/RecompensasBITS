@@ -1,5 +1,5 @@
 // eslint-disable-next-line 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card  } from "react-bootstrap";
 import Model from "./Model"
 
@@ -10,6 +10,21 @@ function Cartas(props){
     const DescProduct=props.InfoP;
     const price = props.price;
     const disponibility = props.disponibility;
+    
+    const [guardado, setGuardado] = useState(false);
+
+    useEffect(()=>{
+        setGuardado(false)
+    },[guardado])
+
+    const idU=props.idU;
+    // const [usuario, setUsuario] = useStat(null);
+
+    // useEffect(()=>{
+    //   const idUsuario=props.idU
+    //     getUniqueUser( idUsuario, setUsuario );
+    // }, [props.idU]);
+    
 
     return(
         <>
@@ -24,8 +39,8 @@ function Cartas(props){
                             <li>¿Hay en existencia?: {disponibility}</li>
                         </ul>
                     </Card.Text>
-
-                    <Model id={idProduct}/> 
+                    
+                    <Model id={idProduct} idU={idU} setGuardado={setGuardado}/> 
                 </Card.Body>
             </Card>
         

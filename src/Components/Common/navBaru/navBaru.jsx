@@ -47,7 +47,7 @@ function NavBaru(props){
             </Nav>
             </Container>
             <Navbar.Text className="bits">
-             {usuario != null ? (
+              {usuario != null ? (
               <div>Usuario:  {usuario.Nombre} ${usuario.Bits} Bits</div>):(
               <p>Cargando Bits...</p>)}
               </Navbar.Text>

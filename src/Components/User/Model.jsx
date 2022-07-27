@@ -11,6 +11,8 @@ import axios from 'axios';
 
 
 
+
+
 function Modals (props) {
 //hooks
     
@@ -18,65 +20,61 @@ function Modals (props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
     // const NP=props.name;
     // const IP=props.info;
 
+  
+  
+  
+    const [producto, setProducto] = useState();
 
-    const [producto, setProducto] = useState(null);
-    
       useEffect(()=>{
         const idProducto=props.id;
-        getUniqueProduct( idProducto, setProducto );
-        
+        getUniqueProduct( idProducto, setProducto);
       }, [props.id]);
 
-
+    
     const [prod, setProd]=useState({
+      idU:'',
       idP:''
     });
-    
 
-  // function handleSubmit (e){
-  //   e.preventDefault();
-  //   console.log('You clicked submit.', producto.Id_Producto, 'your number User is' );
-    
-  //   setShow(false);
-    
-  // }
+    const idU=props.idU;
 
-  // const handleSubmit = async ()=>{
-  //   console.log('Submit', producto.Id_Producto);
-  //   handleClose();
-  // }
+    const url='http://localhost:3001/api/petition/pendient';
 
-  const url='http://192.168.10.191:3001/api/pendientes';
-
-  const applyProd = async () => {
-    setProd({...prod,idP:producto.Id_Producto})
-    console.log('Solicitado',prod);
-    try{
-      await axios.post(url,prod.idP);
-      console.log('Solicitado',prod);
-    } catch(error){
-      console.log('Error ',error);
+  const applyProd = async (Id_Producto:any, idU:any) => {
+      await setProd({...prod,idU:idU, idP:Id_Producto});
+    if(prod.idU===''){
+      console.log('No hay datos en prod');
+    }else{
+      await setProd({...prod,idU:props.idU, idP:Id_Producto});
+      try{
+        await axios.post(url,prod);
+        console.log(prod);
+      } catch(error){
+        console.log('Error ',error);
+      }
+      props.setGuardado(true);
+      handleClose();
     }
-    //props.setGuardado(true);
-    handleClose();
   }
 
   return (
     <>
+    
       <Button variant="warning" onClick={handleShow}>
         Canjear este producto
       </Button>
-
+      
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Confirmación</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           { producto != null ? (
-          <p>Ha seleccionado el producto: <b>{producto.Id_Producto} {producto.Nombre_Producto}</b> con el precio: <b>{producto.Precio}</b> Bits ¿Seguro que quiere adquirirlo?
+          <p>Ha seleccionado el producto: <b>{producto.Nombre_Producto}</b> con el precio: <b>{producto.Precio}</b> Bits ¿Seguro que quiere adquirirlo?
           
           </p>  
           ):(
@@ -87,7 +85,9 @@ function Modals (props) {
           <Button variant="danger" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="success" onClick={(e)=>applyProd()}>
+          <Button variant="success" 
+          onClick={(e)=>applyProd(producto.Id_Producto, idU)}
+          >
             Confirmar
           </Button>
         </Modal.Footer>

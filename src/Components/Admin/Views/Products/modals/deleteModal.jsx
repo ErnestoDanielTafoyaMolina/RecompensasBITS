@@ -29,7 +29,6 @@ function DeleteModals (props) {
       <Button variant="danger" onClick={handleShow}>
         <DeleteIcon fontSize="small" />
             Eliminar
- 
       </Button>
 
       <Modal show={show} onHide={handleClose}>
