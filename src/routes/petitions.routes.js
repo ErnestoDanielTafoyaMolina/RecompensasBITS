@@ -5,7 +5,10 @@ import { getPetitions,
          setAceptedPetitions,
          setDeclinedPetitions,
          getAllPetitionsHistorial,
-         getPetitionsById
+         getPetitionsById,
+         sendMail,
+         getSP_Petition,
+         getHistorialById
 
 
 } from '../controllers/petitions.controllers';
@@ -26,6 +29,10 @@ router.put('/petition/declined/:id',setDeclinedPetitions);
 //endpoint para historial general
 router.get('/historial',getAllPetitionsHistorial);
 //endpoint para el historial individual
-router.get('/historial/:id');
+router.get('/historial/:id',getHistorialById);
+// enpoint para envio del mail
+router.get('/petition/mail',sendMail)
+//enpont para peticion con nombres
+router.get('/petition/complete',getSP_Petition)
 
 export default router;
