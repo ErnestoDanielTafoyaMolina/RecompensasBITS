@@ -1,4 +1,6 @@
 import { getConnection, sql } from "../database/connection";
+import nodemailer from "nodemailer";
+import { request } from "express";
 //toma todas las peticiones
 export const getPetitions = async (req,res) => {
     
@@ -41,19 +43,39 @@ export const getPetitions = async (req,res) => {
   }
 //acepta las peticiones
   export const setAceptedPetitions = async (req,res) => {
-    const pool = await getConnection();
-    const acept = await pool.request()
-    .input("id",req.params.id)
-    .query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Aceptada' WHERE id_Peticiones=@id")
-    console.log(acept);
+    try {
+      const pool = await getConnection();
+  
+      const acept = await pool
+        .request()
+        .input("id", req.params.id)
+        .query("UPDATE [BITS_Recompensas].[dbo].[Peticiones] SET Estado='Aceptada' WHERE id_Peticiones= @id");
+  
+      if (acept.rowsAffected[0] === 0) return res.sendStatus(404);
+  
+      return res.sendStatus(204);
+    } catch (error) {
+      res.status(500);
+      res.send(error.message);
+    }
   }
 //rechaza las peticiones
   export const setDeclinedPetitions = async (req,res) => {
-    const pool = await getConnection();
-    const decline = await pool.request()
-    .input("id",req.params.id)
-    .query("UPDATE [BITS_Recompensas].[dbo].[Preticiones] SET Estado='Rechazada' WHERE id_Peticiones=@id")
-    console.log(decline);
+    try {
+      const pool = await getConnection();
+  
+      const decline = await pool
+        .request()
+        .input("id", req.params.id)
+        .query("UPDATE [BITS_Recompensas].[dbo].[Peticiones] SET Estado='Aceptada' WHERE id_Peticiones= @id");
+  
+      if (decline.rowsAffected[0] === 0) return res.sendStatus(404);
+  
+      return res.sendStatus(204);
+    } catch (error) {
+      res.status(500);
+      res.send(error.message);
+    }
   }
 
   //historial de peticiones
@@ -89,5 +111,87 @@ export const getPetitions = async (req,res) => {
     } catch (error) {
       res.status(500);
       res.send(error.message);
+    }
+  }
+
+  //peticion de resta de puntos
+  export const getSP_UpdateBits = async (req,res) => {
+    try {
+      const pool = await getConnection();
+      const idUsuario= req.body.idUsuario;
+      const idProducto= req.body.idProducto;
+      const bitsProducto = req.body.bitsPrducto;
+      const SPUpdate = await pool
+      .request()
+      .input("idUsuario",idUsuario)
+      .input("idProducto",idProducto)
+      .input("bitsProducto",bitsProducto)
+      .query("EXEC SP_RestaPuntos @idUsuario, @idProducto,@bitsProducto")
+      return res.json(SPUpdate.recordset[0]);
+    } catch (error) {
+      res.send(error.message)
+    }
+  }
+
+  //preparacion del mail para el envio del mail de respuesta
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port:465 ,
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: 'ernesto.tafoyaits@gmail.com', // generated ethereal user
+      pass: 'dkpimjdafgpxcfcd', // generated ethereal password
+    },
+  });
+
+    // send mail with defined transport object
+  export  const sendMail = async (req,res)=>{
+    try {
+      const peticion = req.body.peticion;
+      const mensaje = req.body.mensaje;
+      console.log(req.body)
+      if(peticion==null || mensaje==null){
+        return res.status(400).json({ msg: `Por favor llena los campos solicitados`});
+      }
+      const mailSend= await transporter.sendMail({
+        from: '"RecompensasBits" ernesto.tafoyaits@gmail.com', // sender address
+        to: "alvarokitara189@gmail.com", // list of receivers
+        subject: "Estatus de peticion respondido", // Subject line
+        html: `
+        <p>
+          Estimado usuario, se le informa que la peticion que ha realizado sobre su producto ha 
+          sido <b>${peticion}</b> se le anexan los motivos a continuación.
+          <ul>
+            <li>${mensaje}</li>
+          </ul>
+          Gracias por su comprención, que tenga un buen día.
+        </p>
+        `, // html body
+      });
+      console.log("averquepedo",mailSend);
+      return res.json("Mensaje enviado correctamente");
+    } catch (error) {
+      console.log("falló", error)
+      res.send(error)
+    }
+  }
+
+  //peticiones con nombre de usuario y nombre de proctos
+
+  export const getSP_Petition = async (req,res) => {
+    try {
+      const pool = await getConnection();
+  
+      const idUsuario= req.body.idUsuario;
+      const idProducto= req.body.idProducto;
+  
+      const SP_Peticion = await pool
+      .request()
+      .input("idUsuario",idUsuario)
+      .input("idProducto",idProducto)
+      .query("EXEC [SP_Peticion] @idUsuario, @idProducto");
+      return res.json(SP_Peticion.recordset);
+    } catch (error) {
+      res.send(error.message)
     }
   }
