@@ -3,11 +3,12 @@ import ModalA from "./modalA";
 import ModalD from "./modalD";
 import './usersTable.css'
 
-function TablasUsuario(props){
+function TablasPeticion(props){
     const idPeticion = props.idPeticion;
-    const idUsuario = props.idUsuario;
-    const idProducto = props.idProducto;
+    const NombreUsuario= props.NombreUsuario;
+    const NombreProducto= props.NombreProducto;
     const estado = props.Estado;
+    
 
 
 
@@ -16,10 +17,10 @@ function TablasUsuario(props){
     }
     return(
         <> 
-        <tr key={idProducto}>
+        <tr key={idPeticion}>
             <td>{idPeticion}</td>
-            <td>{idUsuario}</td>
-            <td>{idProducto}</td>
+            <td>{NombreUsuario}</td>
+            <td>{NombreProducto}</td>
             <td>{estado}</td>
             <td>
             <ModalA/>
@@ -30,4 +31,4 @@ function TablasUsuario(props){
     )
 }
 
-export default TablasUsuario;  
+export default TablasPeticion;  

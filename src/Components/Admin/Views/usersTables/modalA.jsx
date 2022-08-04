@@ -22,10 +22,10 @@ function ModalA() {
         </Modal.Header>
         <Modal.Body>Al momento de continuar con la peticion, estas aceptando el canje de este producto, ademas de la resta de los puntos del empleado.</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="success" onClick={handleClose}>
             Aceptar
           </Button>
         </Modal.Footer>

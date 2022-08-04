@@ -22,10 +22,10 @@ function ModalD() {
         </Modal.Header>
         <Modal.Body>Al denegar esta peticion se le llegara a notificar a el empleado el motivo del rechazo de su peticion.</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="success" onClick={handleClose}>
             Aceptar
           </Button>
         </Modal.Footer>

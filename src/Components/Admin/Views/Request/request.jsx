@@ -2,8 +2,8 @@
 //import dependencies
 import React, {useEffect, useState} from "react";
 import Table from 'react-bootstrap/Table';
+import TablasPeticion  from './../usersTables/usersTables'
 //import components
-import TablasUsuario from "../usersTables/usersTables";
 //import petitions
 import { getPendientPetitions /*getUsers*/ } from "../../../../api/petitions_index";
 import './request.css'
@@ -26,8 +26,8 @@ return(
         <thead>
             <tr>
             <th>Id peticion</th>
-            <th>Id usuario</th>
-            <th>Id Producto</th>
+            <th>Nombre_Usuario</th>
+            <th>Nombre_Producto</th>
             <th>Estado Peticion</th>
             <th>Respuesta</th>
             </tr>
@@ -36,10 +36,10 @@ return(
         <tbody>
             {petitions != null ?(
                 petitions.map(petition =>(
-                    <TablasUsuario key={petition.id_Peticiones}
+                    <TablasPeticion key={petition.id_Peticiones}
                     idPeticion={petition.id_Peticiones}
-                    idUsuario={petition.Id_Usuario}
-                    idProducto={petition.Id_Producto}
+                    NombreUsuario={petition.Nombre}
+                    NombreProducto={petition.Nombre_Producto}
                     Estado={petition.Estado}
                     />
                 ))
