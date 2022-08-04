@@ -90,11 +90,18 @@ export const getPetitions = async (req,res) => {
   //historial por id
 
   export const getHistorialById = async (req,res) => {
-    const pool = await getConnection();
-    const historialById = await pool.request()
-    .input("id", req.params.id)
-    .query("SELECT * FROM RegistroCanjeo WHERE id_RegistroCanjeo = @id")
-    res.json(historialById.recordset);
+    try {
+      const pool = await getConnection();
+
+      const historialById = await pool
+      .request()
+      .input("id", req.params.id)
+      .query("SELECT * FROM RegistroCanjeo WHERE id_usuario = @id")
+      
+      return res.json(historialById.recordset);
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   //peticion por id
@@ -150,17 +157,18 @@ export const getPetitions = async (req,res) => {
       const peticion = req.body.peticion;
       const mensaje = req.body.mensaje;
       console.log(req.body)
+      //si el mensaje o la peticion son vacios, no deja que se envíe el mensaje
       if(peticion==null || mensaje==null){
         return res.status(400).json({ msg: `Por favor llena los campos solicitados`});
       }
       const mailSend= await transporter.sendMail({
         from: '"RecompensasBits" ernesto.tafoyaits@gmail.com', // sender address
-        to: "alvarokitara189@gmail.com", // list of receivers
+        to: "edaniimol@gmail.com", // list of receivers
         subject: "Estatus de peticion respondido", // Subject line
         html: `
         <p>
           Estimado usuario, se le informa que la peticion que ha realizado sobre su producto ha 
-          sido <b>${peticion}</b> se le anexan los motivos a continuación.
+          sido <b>${peticion}</b> se le anexa(n) el(los) motivo(s) a continuación.
           <ul>
             <li>${mensaje}</li>
           </ul>
@@ -189,7 +197,7 @@ export const getPetitions = async (req,res) => {
       .request()
       .input("idUsuario",idUsuario)
       .input("idProducto",idProducto)
-      .query("EXEC [SP_Peticion] @idUsuario, @idProducto");
+      .query("EXEC [SP_peticion] 1, 15");
       return res.json(SP_Peticion.recordset);
     } catch (error) {
       res.send(error.message)
