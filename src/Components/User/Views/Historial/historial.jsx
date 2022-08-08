@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import { getHistorial } from "../../../../api/petitions_index";
+import {getHistorialById} from "../../../../api/petitions_index";
 import Table from 'react-bootstrap/Table';
-
+//getHistorialById
 
 
 function HistorialUsuario(props){
@@ -13,7 +13,7 @@ function HistorialUsuario(props){
         const FechaConsumo=props.FechaConsumo;
         const Descripcion=props.Descripcion;
     return(
-        <>
+        
         <tr key={Id_usuario}>
             <td>{id_RegistroCanjeo}</td>
             <td>{Id_usuario}</td>
@@ -22,7 +22,7 @@ function HistorialUsuario(props){
             <td>{FechaConsumo}</td>
             <td>{Descripcion}</td>
         </tr>
-        </>
+        
     )
 }
 
@@ -30,19 +30,19 @@ function HistorialUsuario(props){
 function Historial (){
     
 
-    const [Historial, setHistorial]= useState([]);
+    const [Historial, setHistorialById]= useState([]);
 
     useEffect(()=>{
         TraerHistorial();
-        getHistorial(setHistorial);
+        getHistorialById(setHistorialById);
     },[])
 
 
     function TraerHistorial  () {
-        const historiaal = getHistorial()
+        const historiaal = getHistorialById()
     
         console.log('hola',historiaal)
-        getHistorial(setHistorial)
+        getHistorialById(setHistorialById)
       }
 
     return(
@@ -77,9 +77,7 @@ function Historial (){
 
             </Table>
         </><>
-
-               
-            </></>
+        </></>
     )
 }
 

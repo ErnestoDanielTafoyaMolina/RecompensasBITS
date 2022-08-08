@@ -5,7 +5,7 @@ const getHistorial = async (state) =>{
         const peticion = await axios.get(`http://localhost:3001/api/historial/`);
         state(peticion.data);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 

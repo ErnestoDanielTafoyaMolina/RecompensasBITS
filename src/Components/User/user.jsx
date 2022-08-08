@@ -1,4 +1,3 @@
-// eslint-disable-next-line 
 import React, {useEffect, useState} from 'react';
 
 import { NavBaru} from '../Common/index_common';
