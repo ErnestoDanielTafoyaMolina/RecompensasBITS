@@ -11,12 +11,14 @@ import './request.css'
 function Request(){
     //hooks
     const [petitions, setPetitions]= useState(null);
+    const [guardado, setGuardado] = useState(false);
     // const [users, setUsers] = useState(null)
 
     useEffect(()=>{
         getPendientPetitions(setPetitions);
-        // getUsers(setUsers);
-    },[])
+        setGuardado(false)
+        
+    },[guardado])
 
 return(
     <>
@@ -41,6 +43,7 @@ return(
                     NombreUsuario={petition.Nombre}
                     NombreProducto={petition.Nombre_Producto}
                     Estado={petition.Estado}
+                    setGuardado={setGuardado}
                     />
                 ))
             ):('Cargando...')}

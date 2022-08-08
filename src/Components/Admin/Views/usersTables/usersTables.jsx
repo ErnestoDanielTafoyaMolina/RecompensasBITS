@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import ModalA from "./modalA";
 import ModalD from "./modalD";
 import './usersTable.css'
@@ -8,6 +9,7 @@ function TablasPeticion(props){
     const NombreUsuario= props.NombreUsuario;
     const NombreProducto= props.NombreProducto;
     const estado = props.Estado;
+    const setGuardado=props.setGuardado;
     
 
 
@@ -23,8 +25,12 @@ function TablasPeticion(props){
             <td>{NombreProducto}</td>
             <td>{estado}</td>
             <td>
-            <ModalA/>
-            <ModalD/>
+            <ModalA
+            idPeticion={idPeticion}
+            setGuardado={setGuardado}/>
+            <ModalD
+            idPeticion={idPeticion}
+            setGuardado={setGuardado}/>
             </td>
         </tr>
         </>

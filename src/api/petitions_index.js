@@ -6,6 +6,8 @@ import deleteProductById from "./petitions/deleteProduct";
 import updateProductById from "./petitions/updateProductById";
 import getPendientPetitions from "./petitions/getPendientPetitions";
 import getHistorial from "./petitions/getHistorial";
+import AceptedPetitions from "./petitions/Aceptedp"
+import DeclinedPetitions from "./petitions/Declinedp"
 export {
     getUsers,
     getProducts,
@@ -14,5 +16,7 @@ export {
     deleteProductById,
     updateProductById,
     getPendientPetitions,
-    getHistorial
+    getHistorial,
+    AceptedPetitions,
+    DeclinedPetitions
 }

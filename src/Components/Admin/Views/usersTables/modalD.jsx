@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 // import _default from 'react-bootstrap/Modal';
 import Modal from 'react-bootstrap/Modal';
+import {getPendientPetitions, DeclinedPetitions} from '../../../../api/petitions_index'
 
 
-function ModalD() {
+function ModalD(props) {
   const [show, setShow] = useState(false);
 
+  const [peticion, setPeticion] = useState({
+    Id:''
+   });
+   useEffect(()=>{
+    const idPeticion=props.idPeticion;
+    getPendientPetitions( idPeticion, setPeticion );
+  }, [props.idPeticion])
+  
+  const Eliminarp  = (id) =>{
+    DeclinedPetitions(props.idPeticion);
+    console.log(props.idPeticion);
+    props.setGuardado(true);
+    handleClose()
+  }
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -25,7 +40,7 @@ function ModalD() {
           <Button variant="danger" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="success" onClick={handleClose}>
+          <Button variant="success" onClick={(Eliminarp)}>
             Aceptar
           </Button>
         </Modal.Footer>
