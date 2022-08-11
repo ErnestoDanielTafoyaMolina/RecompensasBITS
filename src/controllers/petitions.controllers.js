@@ -174,7 +174,7 @@ export const getPetitions = async (req,res) => {
           <ul>
             <li>${mensaje}</li>
           </ul>
-          Gracias por su comprención, que tenga un buen día.
+          Gracias por su comprensión, que tenga un buen día.
         </p>
         `, // html body
       });
