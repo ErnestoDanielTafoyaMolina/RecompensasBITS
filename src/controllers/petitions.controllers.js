@@ -125,9 +125,11 @@ export const getPetitions = async (req,res) => {
   export const getSP_UpdateBits = async (req,res) => {
     try {
       const pool = await getConnection();
+
       const idUsuario= req.body.idUsuario;
       const idProducto= req.body.idProducto;
       const bitsProducto = req.body.bitsPrducto;
+      
       const SPUpdate = await pool
       .request()
       .input("idUsuario",idUsuario)
