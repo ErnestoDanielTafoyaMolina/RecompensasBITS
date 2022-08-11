@@ -8,7 +8,8 @@ import { getPetitions,
          getPetitionsById,
          sendMail,
          getSP_Petition,
-         getHistorialById
+         getHistorialById,
+         getSP_UpdateBits
 
 
 } from '../controllers/petitions.controllers';
@@ -40,7 +41,8 @@ router.get('/historial/:id',getHistorialById);
 router.post('/petition/mail',sendMail)
 //enpont para peticion con nombres
 router.get('/petition/complete',getSP_Petition)
-
+//enpoint para resta de puntos
+router.post('/petition/restar', getSP_UpdateBits)
 
 //peticiones para las imagenes
 const diskstorage = multer.diskStorage({
