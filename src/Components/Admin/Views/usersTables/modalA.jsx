@@ -25,7 +25,7 @@ function ModalA(props) {
   
   
 
-  const url ='https://backendbits.herokuapp.com/petition/mail';
+  const url ='https://recompensas-bits.herokuapp.com/api/petition/mail';
 
   const idUsuario=props.Id_usuario;
   const idProducto=props.Id_Producto;

@@ -17,7 +17,6 @@ function Request(){
     useEffect(()=>{
         getPendientPetitions(setPetitions);
         setGuardado(false)
-        
     },[guardado])
 
 return(
@@ -35,9 +34,7 @@ return(
             <th>Respuesta</th>
             </tr>
         </thead>
-
         <tbody>
-        {console.log(petitions)}
         {petitions != null ?(
                 petitions.map(petition =>(
                     <TablasPeticion key={petition.id_Peticiones}

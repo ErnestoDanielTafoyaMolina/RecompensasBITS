@@ -3,7 +3,7 @@ const addProduct = async (name,price,image,desc,stock,state)=>{
     try {
         const peticion = await axios({
             method:'post',
-            url:'https://backendbits.herokuapp.com/users',
+            url:'https://recompensas-bits.herokuapp.com/api/users',
             data:{
                 name:`${name}`,
                 price:`${price}`,

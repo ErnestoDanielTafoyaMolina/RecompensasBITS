@@ -54,7 +54,7 @@ function EditModals (props) {
 
         const UpdatePost = async (id,state) =>{
           try{
-            await axios.put(`https://backendbits.herokuapp.com/products/${id}`,state);
+            await axios.put(`https://recompensas-bits.herokuapp.com/api/products/${id}`,state);
           } catch (error) {
             console.log('error',error)
           }

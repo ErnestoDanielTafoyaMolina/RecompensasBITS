@@ -22,7 +22,7 @@ function AddProductModal(props){
     });
     
     
-    const url='https://backendbits.herokuapp.com/products';
+    const url='https://recompensas-bits.herokuapp.com/api/products';
 
     const cambioDeValor = (name,valor)=>{
       switch(name){

@@ -4,7 +4,7 @@ const updateBits = async (idUsuario,idProducto,bitsProducto, state)=>{
     try {
         const peticion = await axios({
             method: 'put',
-            url:'https://backendbits.herokuapp.com/petition/restar',
+            url:'https://recompensas-bits.herokuapp.com/api/petition/restar',
             data:{
                 idUsuario:`${idUsuario}`,
                 idProducto:`${idProducto}`,
