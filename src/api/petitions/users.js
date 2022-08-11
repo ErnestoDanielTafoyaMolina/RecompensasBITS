@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const getUsers = async (state) => {
     try {
-        const peticion = await axios.get(`https://backendbits.herokuapp.com/api/users/`);
+        const peticion = await axios.get(`https://backendbits.herokuapp.com/users/`);
         state(peticion.data);
     } catch (error) {
         console.log(error);

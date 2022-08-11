@@ -4,7 +4,7 @@ import axios from 'axios';
 // import _default from 'react-bootstrap/Modal';
 import Modal from 'react-bootstrap/Modal';
 import TextField from '@mui/material/TextField';
-import { AceptedPetitions} from '../../../../api/petitions_index'
+import { AceptedPetitions, updateBits} from '../../../../api/petitions_index'
 import { ArrowForwardIosTwoTone } from '@mui/icons-material';
 
 
@@ -17,10 +17,28 @@ function ModalA(props) {
     mensaje:''
   });
   
+  // const [resta,setResta] = useState({
+  //   idUsuario:'',
+  //   idProducto:'',
+  //   bitsProducto:''
+  // })
+  
   
 
-  const url ='https://backendbits.herokuapp.com/api/petition/mail';
+  const url ='https://backendbits.herokuapp.com/petition/mail';
 
+  const idUsuario=props.Id_usuario;
+  const idProducto=props.Id_Producto;
+  const bitsProducto=props.Bits;
+
+  const restarPuntos = async (e)=>{
+    console.log(bitsProducto);
+    console.log(idProducto);
+    console.log(idUsuario);
+    await updateBits(idUsuario,idProducto,bitsProducto);
+    // setResta({...resta,idUsuario:idUsuario, idProducto:idProducto, bitsProducto:bitsProducto});
+    // console.log(resta);
+  } 
 
 // cambi de valor en el formulario
   const onChangeValue = (name, value) =>{
@@ -34,7 +52,11 @@ function ModalA(props) {
       case 'mensaje':
         console.log('Mensaje: ', value);
         setEmail({...email,mensaje:value});
-      break
+      break;
+      // case 'resta':
+      //   console.log('resta',resta)
+      //   setResta({...resta,idUsuario:idUsuario, idProducto:idProducto, bitsProducto:bitsProducto});
+      // break;
       default:
       console.log("a");
     }
@@ -66,7 +88,9 @@ function ModalA(props) {
         <Modal.Header closeButton>
           <Modal.Title>ACEPTACION DE PETICION</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Al momento de dar click en aceptar, usted estará aceptando la peticion del usuario. Pero antes se requiere del correo del mismo y la razón de esta decisión
+        <Modal.Body>
+          <p>{idUsuario} pidió {idProducto} con el precio {bitsProducto}</p>
+          Al momento de dar click en aceptar, usted estará aceptando la peticion del usuario. Pero antes se requiere del correo del mismo y la razón de esta decisión
         <br/>
         <TextField 
         id="filled-basic" 
@@ -88,7 +112,11 @@ function ModalA(props) {
           <Button variant="danger" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="success" onClick={(e)=>addEmailAndMesage()}>
+          <Button variant="success" onClick={(e)=>{
+            addEmailAndMesage();
+             restarPuntos(e);
+            // onChangeValue('resta');
+          }}>
             Aceptar
           </Button>
           

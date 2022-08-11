@@ -47,7 +47,7 @@ function Modals (props) {
 
     const idU=props.idU;
 
-    const url='https://backendbits.herokuapp.com/api/petition/pendient';
+    const url='https://backendbits.herokuapp.com/petition/pendient';
 
   const applyProd = async (Id_Producto:any, idU:any) => {
       await setProd({...prod,idU:idU, idP:Id_Producto});

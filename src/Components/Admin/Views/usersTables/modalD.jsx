@@ -19,7 +19,7 @@ function ModalD(props) {
   
   
 
-  const url ='https://backendbits.herokuapp.com/api/petition/mail';
+  const url ='https://backendbits.herokuapp.com/petition/mail';
 
 
 // cambi de valor en el formulario

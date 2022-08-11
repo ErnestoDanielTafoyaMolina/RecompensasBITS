@@ -27,7 +27,7 @@ function Historial (props){
                         <th>Usuario</th>
                         <th>Producto</th>
                         <th>Descripcion</th>
-                        <th>Fecha</th>
+                        {/* <th>Fecha</th> */}
                     </tr>
                 </thead>
 
@@ -38,7 +38,7 @@ function Historial (props){
                                 Id_Usuario={h.Nombre}
                                 Id_Producto={h.Nombre_Producto}
                                 Estado={h.Estado}
-                                Fecha={h.Fecha}
+                                // Fecha={h.Fecha}
                                 setGuardado={setGuardado}
                                 />
                                 

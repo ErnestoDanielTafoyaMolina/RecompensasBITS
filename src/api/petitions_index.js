@@ -9,6 +9,7 @@ import getHistorial from "./petitions/getHistorial";
 import getHistorialById from "./petitions/getHistorialById";
 import AceptedPetitions from "./petitions/Aceptedp";
 import DeclinedPetitions from "./petitions/Declinedp";
+import updateBits from './petitions/updateBits';
 export {
     getUsers,
     getProducts,
@@ -20,5 +21,6 @@ export {
     getHistorial,
     getHistorialById,
     AceptedPetitions,
-    DeclinedPetitions
+    DeclinedPetitions,
+    updateBits
 }

@@ -30,25 +30,29 @@ return(
             <th>Id peticion</th>
             <th>Nombre_Usuario</th>
             <th>Nombre_Producto</th>
+            <th>Precio en Bits</th>
             <th>Estado Peticion</th>
             <th>Respuesta</th>
             </tr>
         </thead>
 
         <tbody>
-            {petitions != null ?(
+        {console.log(petitions)}
+        {petitions != null ?(
                 petitions.map(petition =>(
                     <TablasPeticion key={petition.id_Peticiones}
                     idPeticion={petition.id_Peticiones}
                     NombreUsuario={petition.Nombre}
+                    Id_Usuario={petition.Id_usuario}
                     NombreProducto={petition.Nombre_Producto}
+                    Id_Producto={petition.Id_Producto}
+                    Precio={petition.Bits}
                     Estado={petition.Estado}
                     setGuardado={setGuardado}
                     />
                 ))
             ):('Cargando...')}
         </tbody>
-
         </Table>
         </div>
     </>
