@@ -49,7 +49,7 @@ export const getPetitions = async (req,res) => {
       const acept = await pool
         .request()
         .input("id", req.params.id)
-        .query("UPDATE [BITS_Recompensas].[dbo].[Peticiones] SET Estado='Aceptada' WHERE id_Peticiones= @id");
+        .query("UPDATE [BITS_Recompensas].[dbo].[Peticiones] SET Estado = 'Aceptada' WHERE id_Peticiones = @id");
   
       if (acept.rowsAffected[0] === 0) return res.sendStatus(404);
   
@@ -67,7 +67,7 @@ export const getPetitions = async (req,res) => {
       const decline = await pool
         .request()
         .input("id", req.params.id)
-        .query("UPDATE [BITS_Recompensas].[dbo].[Peticiones] SET Estado='Aceptada' WHERE id_Peticiones= @id");
+        .query("UPDATE [BITS_Recompensas].[dbo].[Peticiones] SET Estado='Rechazada' WHERE id_Peticiones = @id");
   
       if (decline.rowsAffected[0] === 0) return res.sendStatus(404);
   
@@ -96,12 +96,12 @@ export const getPetitions = async (req,res) => {
       const historialById = await pool
       .request()
       .input("id", req.params.id)
-      .query("SELECT * FROM RegistroCanjeo WHERE id_usuario = @id")
+      .query("SELECT * FROM Peticiones WHERE Id_Usuario = @id")
       
       return res.json(historialById.recordset);
     } catch (error) {
       console.log(error.message)
-    }
+    } 
   }
 
   //peticion por id
@@ -150,20 +150,20 @@ export const getPetitions = async (req,res) => {
       pass: 'dkpimjdafgpxcfcd', // generated ethereal password
     },
   });
-
     // send mail with defined transport object
   export  const sendMail = async (req,res)=>{
     try {
       const peticion = req.body.peticion;
       const mensaje = req.body.mensaje;
+      const email = req.body.email;
       console.log(req.body)
       //si el mensaje o la peticion son vacios, no deja que se envíe el mensaje
-      if(peticion==null || mensaje==null){
-        return res.status(400).json({ msg: `Por favor llena los campos solicitados`});
+      if(peticion==null || mensaje==null || email==null){
+        return res.status(400).json({ msg: `Por favor llena los campos solicitados  ${peticion}, ${email}, ${mensaje}`});
       }
       const mailSend= await transporter.sendMail({
         from: '"RecompensasBits" ernesto.tafoyaits@gmail.com', // sender address
-        to: "edaniimol@gmail.com", // list of receivers
+        to: `${email}`, // list of receivers
         subject: "Estatus de peticion respondido", // Subject line
         html: `
         <p>
@@ -176,15 +176,15 @@ export const getPetitions = async (req,res) => {
         </p>
         `, // html body
       });
-      console.log("averquepedo",mailSend);
-      return res.json("Mensaje enviado correctamente");
+      console.log("aver",mailSend);
+      return res.json("Mensaje enviado correctamente al correo: "+email);
     } catch (error) {
       console.log("falló", error)
       res.send(error)
     }
   }
 
-  //peticiones con nombre de usuario y nombre de proctos
+  //peticiones con nombre de usuario y nombre de productos
 
   export const getSP_Petition = async (req,res) => {
     try {

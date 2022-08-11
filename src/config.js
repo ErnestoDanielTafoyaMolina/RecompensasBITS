@@ -1,7 +1,7 @@
 import { config } from "dotenv"
-
+//gracias a dotenv podemos usar variables de entorno en la aplicación
 config();
-
+//las variables vienen de un archivo externos
 export default {
     port: process.env.PORT || 3001,
     dbUser: process.env.DB_USER || "",
