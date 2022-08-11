@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const getProducts = async (state) => {
-    const peticion = await axios.get("https://bitsrecompensas.azurewebsites.net/api/products");
+    const peticion = await axios.get(`https://backendbits.herokuapp.com/api/products`);
     state(peticion.data);
 }
 

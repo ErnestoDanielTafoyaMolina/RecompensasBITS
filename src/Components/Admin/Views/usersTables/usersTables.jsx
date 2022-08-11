@@ -1,29 +1,40 @@
 import React from "react";
+import { useState } from "react";
+import ModalA from "./modalA";
+import ModalD from "./modalD";
 import './usersTable.css'
 
-function TablasUsuario(props){
+function TablasPeticion(props){
     const idPeticion = props.idPeticion;
-    const idUsuario = props.idUsuario;
-    const idProducto = props.idProducto;
+    const NombreUsuario= props.NombreUsuario;
+    const NombreProducto= props.NombreProducto;
     const estado = props.Estado;
+    const setGuardado=props.setGuardado;
+    
+
+
 
     const rechazarPeticion = () =>{
         
     }
     return(
         <> 
-        <tr key={idProducto}>
+        <tr key={idPeticion}>
             <td>{idPeticion}</td>
-            <td>{idUsuario}</td>
-            <td>{idProducto}</td>
+            <td>{NombreUsuario}</td>
+            <td>{NombreProducto}</td>
             <td>{estado}</td>
-            <td>
-            <button className="btn btn-success">Aceptar</button>
-            <button className="btn btn-danger">Rechazar</button>
+            <td className="botones">
+            <ModalA
+            idPeticion={idPeticion}
+            setGuardado={setGuardado}/>
+            <ModalD
+            idPeticion={idPeticion}
+            setGuardado={setGuardado}/>
             </td>
         </tr>
         </>
     )
 }
 
-export default TablasUsuario;  
+export default TablasPeticion;  

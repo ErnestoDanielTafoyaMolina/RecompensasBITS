@@ -5,6 +5,10 @@ import getUniqueProduct from "./petitions/uniqueProduct";
 import deleteProductById from "./petitions/deleteProduct";
 import updateProductById from "./petitions/updateProductById";
 import getPendientPetitions from "./petitions/getPendientPetitions";
+import getHistorial from "./petitions/getHistorial";
+import getHistorialById from "./petitions/getHistorialById";
+import AceptedPetitions from "./petitions/Aceptedp";
+import DeclinedPetitions from "./petitions/Declinedp";
 export {
     getUsers,
     getProducts,
@@ -12,5 +16,9 @@ export {
     getUniqueProduct,
     deleteProductById,
     updateProductById,
-    getPendientPetitions
+    getPendientPetitions,
+    getHistorial,
+    getHistorialById,
+    AceptedPetitions,
+    DeclinedPetitions
 }

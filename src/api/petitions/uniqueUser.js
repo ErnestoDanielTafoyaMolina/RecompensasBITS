@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const getUniqueUser = async (id,state)=>{
     try{
-        const peticion = await axios.get(`https://bitsrecompensas.azurewebsites.net/api/users/${id}`);
+        const peticion = await axios.get(`https://backendbits.herokuapp.com/api/users/${id}`);
         state(peticion.data);
         
     }catch(error){

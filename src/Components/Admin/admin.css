@@ -51,6 +51,29 @@
     padding: 15px;
 }
 
+.errorF{
+    /* Contorno #DD4F4C Background #FEEFEF
+Color de texto #DD4F4C */
+/* background-color: #FEEFEF; */
+color: #DD4F4C;
+/* border:#DD4F4C solid 1px; */
+/* border-radius: 8px; */
+/*text-align: center;
+align-items: center; */
+}
+
+.errorO{
+background-color: #FEEFEF;
+color: #DD4F4C;
+border:#DD4F4C solid 1px;
+border-radius: 8px;
+/*text-align: center;
+align-items: center; */
+width: 300px;
+padding: 5px;
+}
+
+
 .price{
     align-items:center;
     display:flex;

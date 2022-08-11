@@ -7,7 +7,7 @@ import './App.css';
 // Rutas relativas propias
 import User from './Components/User/user';
 import Admin from './Components/Admin/admin';
-import { getUniqueUser } from './api/petitions_index';
+import { getUniqueUser} from './api/petitions_index';
 
 import errorImage from './assets/img/error.png'
 

@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-const deleteProductById = async (id, state)=>{
+const declinePetitionById = async (id, state)=>{
     try {
-        const peticion = await axios.delete(`local`);
+        const peticion = await axios.put(`https://backendbits.herokuapp.com/api//petition/declined/${id}`);
         state(peticion.data);
     } catch (error) {
-        console.log(error)
-    }
+        console.log(error) }
 }
-export default deleteProductById;
+export default declinePetitionById;

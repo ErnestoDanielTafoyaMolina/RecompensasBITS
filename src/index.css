@@ -11,5 +11,5 @@ code {
 }
 
 h1,h2, h3{
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif !important;
 }

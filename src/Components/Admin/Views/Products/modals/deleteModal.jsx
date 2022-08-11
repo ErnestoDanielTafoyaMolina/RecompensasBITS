@@ -5,6 +5,7 @@ import { useState, useEffect} from "react";
 import {getUniqueProduct, deleteProductById} from '../../../../../api/petitions_index';
 
 import DeleteIcon from '@mui/icons-material/Delete';
+
 function DeleteModals (props) {
 //hooks
     const [producto, setProducto] = useState(null);
@@ -29,9 +30,8 @@ function DeleteModals (props) {
       <Button variant="danger" onClick={handleShow}>
         <DeleteIcon fontSize="small" />
             Eliminar
- 
       </Button>
-
+    
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Eliminar Producto</Modal.Title>
